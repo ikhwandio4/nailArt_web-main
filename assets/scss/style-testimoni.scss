@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Roboto&family=Young+Serif&display=swap');
+$font-size: 16px;
+$font-color: #333;
+
+@function get-font-family() {
+  @return 'Roboto', sans-serif;
+}
+@mixin get-font-style() {
+  font-size: $font-size;
+  color: $font-color;
+}
+
+@mixin testimonial-style($isBold: true) {
+  font-family: get-font-family;
+  @include get-font-style;
+
+  @if $isBold {
+    .name {
+      font-weight: bold;
+    }
+  } @else {
+    .name {
+      font-weight: normal;
+    }
+  }
+}
+
+#testimonial {
+  @include testimonial-style;
+
+  //  loop
+  @for $i from 1 through 3 {
+    .additional-name-#{$i} {
+      @include testimonial-style(false);
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Young+Serif&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swa");
+.font-small {
+  font-size: 10px;
+}
+
+.font-medium {
+  font-size: 28px;
+  font-family: 'Arial, sans-serif';
+  color: #333;
+  font-weight: 500;
+}
+
+.font-large {
+  font-size: 60px;
+}
+
+.hero h1 {
+  font-family: "Young Serif";
+}
+
+.hero p {
+  font-family: "Lobster";
+}
+
+@media screen and (max-width: 1300px) {
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+  .hero p {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 820px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero p {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 580px) {
+  .hero h1 {
+    font-size: 1.2rem;
+  }
+  .hero p {
+    font-size: 0.75rem;
+  }
+}
+
+/*# sourceMappingURL=style-hero.css.map */

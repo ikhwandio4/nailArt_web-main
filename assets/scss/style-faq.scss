@@ -1,0 +1,25 @@
+@import "faq-variable";
+
+@for $i from 1 through 4 {
+  .text-style-#{$i} {
+    font-size: $base-font-size * $i !important;
+  }
+}
+
+#faq {
+  font-family: $font-family;
+}
+
+.accordion-button {
+  font-family: $font-family;
+  color: $font-color;
+  padding: 15px; 
+}
+
+.accordion-body {
+  font-family: $font-family;
+  background: $accordion-body-background; 
+  padding: 15px; 
+  color: $font-abody-color;
+  border-top: 1px solid #ddd; 
+}

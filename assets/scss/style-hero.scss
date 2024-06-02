@@ -1,0 +1,59 @@
+//SASS by Saiful
+@import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swa');
+
+@function ubah-font($map, $key) {
+  @return map-get($map, $key);
+}
+ 
+$type:("small": 10px, "medium": 28px, "large": 60px);
+
+@each $name, $size in $type {
+    .font-#{$name} {
+        font-size: $size;
+    }
+}
+
+$font: (
+  "font1": 'Young Serif',
+  "font2": 'Lobster',
+);
+
+.hero h1 {
+  font-family: ubah-font($font, "font1");
+}
+
+.hero p {
+  font-family: ubah-font($font, "font2"); 
+}
+
+@media screen and (max-width: 1300px) {        
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero p {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 820px) {     
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 580px) {
+            
+  .hero h1 {
+    font-size: 1.2rem;
+  }
+
+  .hero p {
+    font-size: 0.75rem;
+  }
+}

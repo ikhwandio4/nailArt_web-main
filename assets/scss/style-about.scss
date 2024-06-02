@@ -1,0 +1,56 @@
+@import "about-variable";
+
+@mixin text-style($size, $is-success: false) {
+  font-size: $size;
+
+  @if $is-success {
+    color: $warna-text;
+  } @else {
+    color: $warna-text1 !important;
+  }
+}
+
+#about {
+  background-color: $background-color;
+  padding: 50px 0;
+
+  .italic-foreign {
+    font-style: italic;
+  }
+
+  img {
+    border-radius: 10px;
+    box-shadow: 0 0 10px $box-shadow-color;
+  }
+
+  h1.section-heading {
+    @include text-style($section-heading-font-size, $is-success: true);
+    margin-bottom: $section-heading-margin-bottom;
+    font-weight: $section-heading-font-weight;
+  }
+
+  p.section-deskripsi {
+    @include text-style($section-deskripsi-font-size);
+    color: $section-deskripsi-color;
+    line-height: $section-deskripsi-line-height;
+  }
+}
+
+.section-heading {
+    font-family: $font-heading;
+    font-size: $font-size-heading;
+    font-weight: $font-weight-heading;
+    color: $color;
+}
+
+.section-deskripsi {
+    font-family: $font-description;
+    font-size: $font-size-description;
+    line-height: $line-height-description;
+    color: $color;
+}
+
+.italic-foreign {
+    font-style: italic;
+    color: $color;
+}
