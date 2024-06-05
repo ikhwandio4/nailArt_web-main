@@ -19,7 +19,7 @@ function tambahKatalog($id_desain, $nama_treatment, $harga)
 function ambilKatalog()
 {
     global $koneksi;
-    $query = "SELECT id_katalog, id_desain, nama_treatment, harga FROM katalog_harga";
+    $query = "SELECT * FROM katalog_harga";
     $result = mysqli_query($koneksi, $query);
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }

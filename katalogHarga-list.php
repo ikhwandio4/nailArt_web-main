@@ -56,7 +56,7 @@ include 'katalogHarga.php';
                                             echo "<td>" . $k['nama_treatment'] . "</td>";
                                             echo "<td>" . $k['harga'] . "</td>";
                                             echo "<td>";
-                                            echo "<a href='katalogHarga-edit.php?id=" . $k['id_katalog'] . "' class='btn btn-sm btn-warning'>Edit</a> ";
+                                            echo "<a href='katalogHarga-edit.php?ID=" . $k['id_katalog'] . "' class='btn btn-sm btn-warning'>Edit</a> ";
                                             echo "<a href='katalogHarga.php?hapus=" . $k['id_katalog'] . "' class='btn btn-sm btn-danger' name='hapus' onclick='return confirm(\"Apakah Anda yakin ingin menghapus data ini?\")'>Hapus</a>";
                                             echo "</td>";
                                             echo "</tr>";

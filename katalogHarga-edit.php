@@ -2,12 +2,12 @@
 require 'sidebar.php';
 include 'koneksi.php';
 
+$id = $_GET['ID'];
 // Ambil data desain dari tabel desain_cadangan
 $queryDesain = "SELECT * FROM desain_cadangan";
 $resultDesain = mysqli_query($conn, $queryDesain);
 
 // Ambil data lama berdasarkan ID atau cara lain yang sesuai
-$id = $_GET['id'];
 $queryDataLama = "SELECT * FROM katalog_harga WHERE id_katalog = $id";
 $resultDataLama = mysqli_query($conn, $queryDataLama);
 $data_lama = mysqli_fetch_assoc($resultDataLama);
@@ -40,7 +40,7 @@ $data_lama = mysqli_fetch_assoc($resultDataLama);
                         <div class="card">
                             <div class="card-body">
                                 <form action="katalogHarga.php" method="POST">
-                                    <input type="hidden" name="id_katalog" value="<?php echo htmlspecialchars($data['id_katalog'] ?? ''); ?>">
+                                    <input type="text" name="id_katalog" value="<?php echo htmlspecialchars($data_lama['id_katalog'] ?? ''); ?>">
                                     <div class="mb-3">
                                         <label for="id_desain" class="form-label">ID Desain</label>
                                         <select class="form-control" id="id_desain" name="id_desain" aria-describedby="idDesainHelp">
