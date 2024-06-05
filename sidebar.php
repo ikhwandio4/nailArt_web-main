@@ -56,7 +56,7 @@
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
-                <span class="hide-menu">pemesanan</span>
+                <span class="hide-menu">Pemesanan</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -68,7 +68,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+              <a class="sidebar-link" href="desainCadangan-list.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-file-description"></i>
                 </span>
@@ -76,7 +76,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+              <a class="sidebar-link" href="katalogHarga-list.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-typography"></i>
                 </span>

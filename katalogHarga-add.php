@@ -1,17 +1,18 @@
 <?php
-
 require 'sidebar.php';
+include 'koneksi.php';
 
+// Ambil data desain dari tabel desain_cadangan
+$queryDesain = "SELECT * FROM desain_cadangan";
+$resultDesain = mysqli_query($conn, $queryDesain);
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modernize Free</title>
-    <link rel="shortcut icon" type="image/png" href="/assets/images/lainnya/logo.jpg" />
-    <link rel="stylesheet" href="./Modernize-bootstrap-free-main/src/assets/css/styles.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Tambah Katalog Harga</title>
 </head>
 
 <body>
@@ -72,37 +73,29 @@ require 'sidebar.php';
                             <h5 class="card-title fw-semibold mb-4">Forms</h5>
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="pelanggan.php" method="POST">
+                                    <form action="katalogHarga.php" method="POST">
                                         <div class="mb-3">
-                                            <label for="namaPelanggan" class="form-label">Nama Pelanggan</label>
-                                            <input type="text" class="form-control" id="namaPelanggan" name="nama_pelanggan" aria-describedby="namaHelp">
-                                            <div id="namaHelp" class="form-text">Masukkan nama pelanggan.</div>
+                        <label for="id_desain" class="form-label">ID Desain</label>
+                        <select class="form-control" id="id_desain" name="id_desain" aria-describedby="idDesainHelp">
+                            <?php
+                            while ($rowDesain = mysqli_fetch_assoc($resultDesain)) {
+                                echo "<option value='{$rowDesain['id_desain']}'>{$rowDesain['nama_desain']}</option>";
+                            }
+                            ?>
+                        </select>
+                        <div id="idDesainHelp" class="form-text">Pilih ID desain.</div>
+                    </div>
+                                        <div class="mb-3">
+                                            <label for="nama_treatment" class="form-label">Nama Treatment</label>
+                                            <input type="text" class="form-control" id="nama_treatment" name="nama_treatment" aria-describedby="namaHelp">
+                                            <div id="namaHelp" class="form-text">Masukkan nama treatment.</div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="noTelp" class="form-label">No Telp</label>
-                                            <input type="text" class="form-control" id="noTelp" name="no_telp" aria-describedby="telpHelp">
-                                            <div id="telpHelp" class="form-text">Masukkan nomor telepon pelanggan.</div>
+                                            <label for="harga" class="form-label">Harga</label>
+                                            <input type="text" class="form-control" id="harga" name="harga" aria-describedby="hargaHelp">
+                                            <div id="hargaHelp" class="form-text">Masukkan harga.</div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="alamat" class="form-label">Alamat</label>
-                                            <input type="text" class="form-control" id="alamat" name="alamat" aria-describedby="alamatHelp">
-                                            <div id="alamatHelp" class="form-text">Masukkan alamat pelanggan.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">Email address</label>
-                                            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-                                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                            <select class="form-control" id="jenisKelamin" name="jenis_kelamin" aria-describedby="jenis_kelaminHelp">
-                                                <option value="Laki-laki">Laki-laki</option>
-                                                <option value="Perempuan">Perempuan</option>
-                                            </select>
-                                            <div id="jenis_kelaminHelp" class="form-text">Pilih jenis kelamin pelanggan.</div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary" name="tambah">Submit</button>
-                                        <a href="pelanggan-list.php" class="btn btn-secondary">Kembali</a>
+                                        <button type="submit" name="tambah" class="btn btn-primary">Submit</button>
                                     </form>
                                 </div>
                             </div>
@@ -110,13 +103,7 @@ require 'sidebar.php';
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/sidebarmenu.js"></script>
-    <script src="../assets/js/app.min.js"></script>
-    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+
 </body>
 
 </html>

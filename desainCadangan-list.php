@@ -1,6 +1,6 @@
 <?php
 // Include the file containing the database connection and functions
-include 'pelanggan.php';
+include 'desainCadangan.php';
 
 ?>
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ include 'pelanggan.php';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Data Pelanggan</title>
+    <title>Data Desain Cadangan</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Custom Stylesheet -->
@@ -18,7 +18,8 @@ include 'pelanggan.php';
     <link href="./quixlab-master/css/style.css" rel="stylesheet">
     <style>
         .content-body {
-            margin-left: 250px; /* Adjust this value to match the width of your sidebar */
+            margin-left: 250px;
+            /* Adjust this value to match the width of your sidebar */
             padding: 20px;
         }
     </style>
@@ -34,35 +35,27 @@ include 'pelanggan.php';
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">List Data Pelanggan</h4>
-                            <a href="pelanggan-add.php" class="btn btn-primary mb-3">Tambah</a>
+                            <h4 class="card-title">List Data Desain Cadangan</h4>
+                            <a href="desainCadangan-add.php" class="btn btn-primary mb-3">Tambah</a>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Nama</th>
-                                            <th>Email</th>
-                                            <th>No. HP</th>
-                                            <th>Alamat</th>
-                                            <th>Jenis Kelamin</th>
+                                            <th>Nama Desain</th>
+                                            <th>Deskripsi Desain</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $pelanggan = ambilPelanggan();
-                                        foreach ($pelanggan as $p) {
+                                        $desain = ambilDesain();
+                                        foreach ($desain as $d) {
                                             echo "<tr>";
-                                            echo "<td>" . $p['id_pelanggan'] . "</td>";
-                                            echo "<td>" . $p['nama_pelanggan'] . "</td>";
-                                            echo "<td>" . $p['email'] . "</td>";
-                                            echo "<td>" . $p['no_telp'] . "</td>";
-                                            echo "<td>" . $p['alamat'] . "</td>";
-                                            echo "<td>" . $p['jenis_kelamin'] . "</td>";
+                                            echo "<td>" . $d['nama_desain'] . "</td>";
+                                            echo "<td>" . $d['deskripsi_desain'] . "</td>";
                                             echo "<td>";
-                                            echo "<a href='pelanggan-edit.php?id=" . $p['id_pelanggan'] . "' class='btn btn-sm btn-warning'>Edit</a> ";
-                                            echo "<a href='pelanggan.php?hapus=" . $p['id_pelanggan'] . "' class='btn btn-sm btn-danger' name='hapus' onclick='return confirm(\"Apakah Anda yakin ingin menghapus pelanggan ini?\")'>Hapus</a>";
+                                            echo "<a href='desainCadangan-edit.php?id=" . $d['id_desain'] . "' class='btn btn-sm btn-warning'>Edit</a> ";
+                                            echo "<a href='desainCadangan.php?hapus=" . $d['id_desain'] . "' class='btn btn-sm btn-danger' name='hapus' onclick='return confirm(\"Apakah Anda yakin ingin menghapus desain ini?\")'>Hapus</a>";
                                             echo "</td>";
                                             echo "</tr>";
                                         }
@@ -77,5 +70,4 @@ include 'pelanggan.php';
         </div>
     </div>
 </body>
-
 </html>

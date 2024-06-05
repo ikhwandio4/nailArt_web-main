@@ -17,15 +17,15 @@ function tambahPelanggan($nama_pelanggan, $no_telp, $alamat, $email, $jenis_kela
 // Fungsi untuk mengambil data pelanggan
 function ambilPelanggan() {
     global $koneksi;
-    $query = "SELECT id_pelanggan, nama_pelanggan, email, no_telp, alamat, jenis_kelamin FROM pelanggan";
+    $query = "SELECT id_pelanggan, nama_pelanggan, no_telp, alamat, email, jenis_kelamin FROM pelanggan";
     $result = mysqli_query($koneksi, $query);
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
 // Fungsi untuk mengubah data pelanggan
-function ubahPelanggan($id_pelanggan, $nama_pelanggan, $email, $no_telp, $alamat, $jenis_kelamin) {
+function ubahPelanggan($id_pelanggan, $nama_pelanggan, $no_telp, $alamat,$email, $jenis_kelamin) {
     global $koneksi;
-    $query = "UPDATE pelanggan SET nama_pelanggan='$nama_pelanggan', email='$email', no_telp='$no_telp', alamat='$alamat', jenis_kelamin='$jenis_kelamin' WHERE id_pelanggan=$id_pelanggan";
+    $query = "UPDATE pelanggan SET nama_pelanggan='$nama_pelanggan', no_telp='$no_telp', alamat='$alamat', email='$email', jenis_kelamin='$jenis_kelamin' WHERE id_pelanggan=$id_pelanggan";
     mysqli_query($koneksi, $query);
 }
 
@@ -43,8 +43,8 @@ if (isset($_POST['tambah'])) {
     $no_telp = $_POST['no_telp'];
     $alamat = $_POST['alamat'];
     $jenis_kelamin = $_POST['jenis_kelamin'];
-    tambahPelanggan($nama_pelanggan, $email, $no_telp, $alamat, $jenis_kelamin);
-    header("Location: pelanggan-list3.php");
+    tambahPelanggan($nama_pelanggan,$no_telp,$alamat, $email, $jenis_kelamin);
+    header("Location: pelanggan-list.php");
     exit();
 }
 
@@ -56,8 +56,8 @@ if (isset($_POST['ubah'])) {
     $no_telp = $_POST['no_telp'];
     $alamat = $_POST['alamat'];
     $jenis_kelamin = $_POST['jenis_kelamin'];
-    ubahPelanggan($id_pelanggan, $nama_pelanggan, $email, $no_telp, $alamat, $jenis_kelamin);
-    header("Location: pelanggan-list3.php");
+    ubahPelanggan($id_pelanggan, $nama_pelanggan, $no_telp, $alamat,$email, $jenis_kelamin);
+    header("Location: pelanggan-list.php");
     exit();
 }
 
@@ -65,7 +65,7 @@ if (isset($_POST['ubah'])) {
 if (isset($_GET['hapus'])) {
     $id_pelanggan = $_GET['hapus'];
     hapusPelanggan($id_pelanggan);
-    header("Location: pelanggan-list3.php");
+    header("Location: pelanggan-list.php");
     exit();
 }
 ?>

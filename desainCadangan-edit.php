@@ -1,7 +1,13 @@
 <?php
-
 require 'sidebar.php';
+include 'koneksi.php';
 
+// Assuming you have fetched the data and stored it in an associative array
+$id = $_GET['id'];
+
+$query = "SELECT * FROM desain_cadangan WHERE id_desain = $id";
+$result = mysqli_query($conn, $query);
+$data = mysqli_fetch_assoc($result);
 ?>
 <!doctype html>
 <html lang="en">
@@ -72,37 +78,19 @@ require 'sidebar.php';
                             <h5 class="card-title fw-semibold mb-4">Forms</h5>
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="pelanggan.php" method="POST">
+                                    <form action="desainCadangan.php" method="POST">
+                                        <input type="hidden" name="id_desain" value="<?php echo htmlspecialchars($data['id_desain'] ?? ''); ?>">
                                         <div class="mb-3">
-                                            <label for="namaPelanggan" class="form-label">Nama Pelanggan</label>
-                                            <input type="text" class="form-control" id="namaPelanggan" name="nama_pelanggan" aria-describedby="namaHelp">
-                                            <div id="namaHelp" class="form-text">Masukkan nama pelanggan.</div>
+                                            <label for="nama_desain" class="form-label">Nama Desain</label>
+                                            <input type="text" class="form-control" id="nama_desain" name="nama_desain" aria-describedby="namaHelp" value="<?php echo htmlspecialchars($data['nama_desain']); ?>">
+                                            <div id="namaHelp" class="form-text">Masukkan nama desain.</div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="noTelp" class="form-label">No Telp</label>
-                                            <input type="text" class="form-control" id="noTelp" name="no_telp" aria-describedby="telpHelp">
-                                            <div id="telpHelp" class="form-text">Masukkan nomor telepon pelanggan.</div>
+                                            <label for="deskripsi_desain" class="form-label">Deskripsi Desain</label>
+                                            <textarea class="form-control" id="deskripsi_desain" name="deskripsi_desain" aria-describedby="deskripsiHelp"><?php echo htmlspecialchars($data['deskripsi_desain']); ?></textarea>
+                                            <div id="deskripsiHelp" class="form-text">Masukkan deskripsi desain.</div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="alamat" class="form-label">Alamat</label>
-                                            <input type="text" class="form-control" id="alamat" name="alamat" aria-describedby="alamatHelp">
-                                            <div id="alamatHelp" class="form-text">Masukkan alamat pelanggan.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">Email address</label>
-                                            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-                                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                            <select class="form-control" id="jenisKelamin" name="jenis_kelamin" aria-describedby="jenis_kelaminHelp">
-                                                <option value="Laki-laki">Laki-laki</option>
-                                                <option value="Perempuan">Perempuan</option>
-                                            </select>
-                                            <div id="jenis_kelaminHelp" class="form-text">Pilih jenis kelamin pelanggan.</div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary" name="tambah">Submit</button>
-                                        <a href="pelanggan-list.php" class="btn btn-secondary">Kembali</a>
+                                        <button type="submit" name="ubah" class="btn btn-primary">Submit</button>
                                     </form>
                                 </div>
                             </div>
