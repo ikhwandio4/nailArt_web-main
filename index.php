@@ -84,7 +84,10 @@
             <a class="nav-link" href="#faq">FAQ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#kontak">Contact</a>
+            <a class="nav-link" href="#kontak">Contact</a>            
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./sidebar.php">Admin</a>            
           </li>
         </ul>
       </div>
