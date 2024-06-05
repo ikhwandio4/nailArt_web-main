@@ -1,17 +1,16 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ohmynailart";
 
-// Create connection
+<?php
+$servername = "localhost"; // Nama host
+$username = "root"; // Nama pengguna database
+$password = ""; // Kata sandi pengguna
+$dbname = "ohmynailart"; // Nama database
+
+// Membuat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+// Memeriksa koneksi
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Koneksi gagal: " . $conn->connect_error);
 }
-// Menutup koneksi
-$conn->close();
-
+echo "Koneksi berhasil";
 ?>

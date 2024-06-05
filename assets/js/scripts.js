@@ -200,6 +200,36 @@ document.getElementById("open-modal").addEventListener("click", function () {
 //   });
 // });
 
+// alert ulasan
+
+document.getElementById("testimonial-form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  var form = this;
+
+  // Use Fetch API to submit form data
+  fetch(form.action, {
+      method: form.method,
+      body: new FormData(form)
+  })
+  .then(function(response) {
+      // Check if response is OK
+      if (response.ok) {
+          // Reset form after successful submission
+          form.reset();
+          // Show sweet alert for success
+          Swal.fire("Success!", "Ulasan berhasil dikirim!", "success");
+      } else {
+          // Show sweet alert for failure
+          Swal.fire("Error!", "Gagal mengirim ulasan.", "error");
+      }
+  })
+  .catch(function(error) {
+      // Show sweet alert for errors
+      Swal.fire("Error!", "Terjadi kesalahan.", "error");
+  });
+});
+
 
 
 //script test by aan

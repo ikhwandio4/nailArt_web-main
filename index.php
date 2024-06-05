@@ -1,9 +1,3 @@
-<?php
-
-include 'koneksi.php';
-
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -173,7 +167,7 @@ include 'koneksi.php';
     <div class="container">
 
         <div class="section-title">
-            <h2>Gallery Kuku Kami</h2>
+            <h2>Gallery Desain Kami </h2>
             <p>Berikut adalah beragam desain kuku yang kami tawarkan:</p>
         </div>
 
@@ -323,94 +317,50 @@ include 'koneksi.php';
 
   <!-- Akhiran  -->
 
-  <!-- Awalan  -->
-  <!-- <section id="testimonial">
-    <div class="slide-container swiper">
-      <div class="section-title">
-        <h2>Testimonial</h2>
-      </div>
-      <div class="slide-content">
-        <div class="card-wrapper swiper-wrapper">
-          <div class="card swiper-slide">
-            <div class="image-content">
-              <span class="overlay" id="overlay-1"></span>
-
-              <div class="card-image">
-                <img src="" alt="" class="card-img">
-              </div>
-            </div>
-
-            <div class="card-content">
-              <h2 class="name">Costumer 1</h2>
-              <p class="coment"><sup><i class="fa fa-quote-left"></i></sup>&emsp; Udah pernah nyobain beli di toko lain,
-                tapi kaget banget ternyata disini harganya lebih murah!!. hehehe😁😉&emsp;<sup><i
-                    class="fa fa-quote-right"></i></sup></p>
-            </div>
-          </div>
-          <div class="card swiper-slide">
-            <div class="image-content">
-              <span class="overlay" id="overlay-2"></span>
-
-              <div class="card-image">
-                <img src="" alt="" class="card-img">
-              </div>
-            </div>
-
-            <div class="card-content">
-              <h2 class="name">Costumer 2</h2>
-              <p class="coment"><sup><i class="fa fa-quote-left"></i></sup>&emsp; Layanan cepat dan tepat waktu, sangat
-                puas dengan pelayanannya.😎😎&emsp;<sup><i class="fa fa-quote-right"></i></sup></p>
-            </div>
-          </div>
-          <div class="card swiper-slide">
-            <div class="image-content">
-              <span class="overlay" id="overlay-3"></span>
-
-              <div class="card-image">
-                <img src="" alt="" class="card-img">
-              </div>
-            </div>
-
-            <div class="card-content">
-              <h2 class="name">Costumer 3</h2>
-              <p class="coment"><sup><i class="fa fa-quote-left"></i></sup>&emsp; Produknya sangat bagus dan
-                berkualitas, rekomendasi buat yang ingin beli. 😊😊&emsp;<sup><i class="fa fa-quote-right"></i></sup>
-              </p>
-            </div>
-          </div>
-          <div class="card swiper-slide">
-            <div class="image-content">
-              <span class="overlay" id="overlay-4"></span>
-
-              <div class="card-image">
-                <img src="" alt="" class="card-img">
-              </div>
-            </div>
-
-            <div class="card-content">
-              <h2 class="name">Costumer 4</h2>
-              <p class="coment"><sup><i class="fa fa-quote-left"></i></sup>&emsp;Saya sudah order berulang kali di
-                layanan web hosting ini, tidak pernah ada kecewa, apalagi support yang sangat cepat dan
-                ramah.😊😍&emsp;<sup><i class="fa fa-quote-right"></i></sup></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="swiper-button-next swiper-navBtn"></div>
-      <div class="swiper-button-prev swiper-navBtn"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </section>   -->
+  <style>
+        .text-center {
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .testimonial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1em;
+            min-width: 400px;
+        }
+        .testimonial-table th, .testimonial-table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .testimonial-table th {
+            background-color: #f4f4f4;
+        }
+        .testimonial-table tbody tr:nth-of-type(even) {
+            background-color: #f9f9f9;
+        }
+        .testimonial-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
 
 
 
-  <div class="slide-container swiper">
-    <div class="section-title">
-        <h2>Testimonial</h2>
+<article id="testimoni" class="card judul">
+    
+    <div class="testimonial-container" id="testimonials-container">
+        <!-- Testimonials will be inserted here -->
     </div>
 
-    <table>
+    <h1 class="text-center">Ulasan</h1>
+
+<table class="testimonial-table" id="testimonial-table">
     <thead>
         <tr>
             <th>Nama Pelanggan</th>
@@ -418,153 +368,106 @@ include 'koneksi.php';
             <th>Tanggal Ulasan</th>
         </tr>
     </thead>
-    <tbody>
-        <?php if (!empty($testimonials)): ?>
-            <?php foreach ($testimonials as $testimonial): ?>
-                <tr>
-                    <td><?php echo $testimonial['nama_pelanggan']; ?></td>
-                    <td><?php echo $testimonial['teks_ulasan']; ?></td>
-                    <td><?php echo $testimonial['tanggal_ulasan']; ?></td>
-                </tr>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <tr>
-                <td colspan="3">Tidak ada testimonial.</td>
-            </tr>
-        <?php endif; ?>
+    <tbody id="testimonial-tbody">
+        <!-- Ulasan will be inserted here -->
     </tbody>
 </table>
-    <div class="slide-content">
-        <div class="card-wrapper swiper-wrapper" id="testimonial-container">
-            <?php if (!empty($testimonials)): ?>
-                <?php foreach ($testimonials as $index => $testimonial): ?>
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay" id="overlay-<?php echo $index + 1; ?>"></span>
-                            <div class="card-image">
-                                <img src="path/to/default-image.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h2 class="name"><?php echo $testimonial['nama_pelanggan']; ?></h2>
-                            <p class="coment"><sup><i class="fa fa-quote-left"></i></sup>&emsp;<?php echo $testimonial['teks_ulasan']; ?>&emsp;<sup><i class="fa fa-quote-right"></i></sup></p>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>Tidak ada testimonial.</p>
-            <?php endif; ?>
-        </div>
-    </div>
-    <div class="swiper-button-next swiper-navBtn"></div>
-    <div class="swiper-button-prev swiper-navBtn"></div>
-    <div class="swiper-pagination"></div>
-</div>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize Swiper (Make sure Swiper is included in your project)
-        new Swiper('.swiper', {
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            // Add additional Swiper options here
-        });
-    });
-    </script>
+<script>
+    // Fetch the ulasan
+    fetch('fetch_testimoni.php')
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.getElementById('testimonial-tbody');
+            let currentIndex = 0;
+
+            function displayTestimonials() {
+                tbody.innerHTML = ''; // Clear the table body
+                for (let i = 0; i < 3; i++) {
+                    const testimonial = data[(currentIndex + i) % data.length];
+                    const row = document.createElement('tr');
+
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = testimonial.nama;
+
+                    const reviewCell = document.createElement('td');
+                    reviewCell.innerHTML = `&quot;${testimonial.ulasan}&quot;`;
+
+                    const dateCell = document.createElement('td');
+                    dateCell.textContent = testimonial.tanggal;
+
+                    row.appendChild(nameCell);
+                    row.appendChild(reviewCell);
+                    row.appendChild(dateCell);
+
+                    tbody.appendChild(row);
+                }
+                currentIndex = (currentIndex + 3) % data.length;
+            }
+
+            displayTestimonials(); // Initial display
+            setInterval(displayTestimonials, 5000); // Update every 5 seconds
+        })
+        .catch(error => console.error('Error fetching testimonials:', error));
+</script>
+</article>
+
+
 
 
 
 <section id="testimonial-form" style="padding: 50px 0; background: #fff;">
-<div class="container form-container">
-    <div class="section-title form-title">
-        <h2>Submit Your Testimonial</h2>
+    <div class="container form-container">
+        <div class="section-title form-title">
+            <h2>Submit Your Testimonial</h2>
+        </div>
+        <form id="testimonial-form" action="proses_tambah_ulasan.php" method="POST" style="display: flex; flex-direction: column;">
+            <table class="form-table">
+                <tr>
+                    <td><label for="nama_pelanggan">Nama Pelanggan</label></td>
+                    <td><input type="text" id="nama_pelanggan" name="nama_pelanggan" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="no_telp">No. Telp</label></td>
+                    <td><input type="tel" id="no_telp" name="no_telp" required></td>
+                </tr>
+                <tr>
+                    <td><label for="teks_ulasan">Teks Ulasan</label></td>
+                    <td><textarea id="teks_ulasan" name="teks_ulasan" rows="4" required></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="tanggal_ulasan">Tanggal Ulasan</label></td>
+                    <td><input type="date" id="tanggal_ulasan" name="tanggal_ulasan" required></td>
+                </tr>
+                <tr>
+                    <td><label for="rating">Rating</label></td>
+                    <td>
+                        <select id="rating" name="rating" required>
+                            <option value="1">⭐</option>
+                            <option value="2">⭐⭐</option>
+                            <option value="3">⭐⭐⭐</option>
+                            <option value="4">⭐⭐⭐⭐</option>
+                            <option value="5">⭐⭐⭐⭐⭐</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;"><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
     </div>
-    <form id="testimonial-form" action="proses_tambah_ulasan.php" method="POST" style="display: flex; flex-direction: column;">
-        <table class="form-table">
-            <tr>
-                <td><label for="nama_pelanggan">Nama Pelanggan</label></td>
-                <td><input type="text" id="nama_pelanggan" name="nama_pelanggan" required></td>
-            </tr>
-            <tr>
-                <td><label for="email">Email</label></td>
-                <td><input type="email" id="email" name="email" required></td>
-            </tr>
-            <tr>
-                <td><label for="no_telp">No. Telp</label></td>
-                <td><input type="tel" id="no_telp" name="no_telp" required></td>
-            </tr>
-            <tr>
-                <td><label for="teks_ulasan">Teks Ulasan</label></td>
-                <td><textarea id="teks_ulasan" name="teks_ulasan" rows="4" required></textarea></td>
-            </tr>
-            <tr>
-                <td><label for="tanggal_ulasan">Tanggal Ulasan</label></td>
-                <td><input type="date" id="tanggal_ulasan" name="tanggal_ulasan" required></td>
-            </tr>
-            <tr>
-                <td><label for="rating">Rating</label></td>
-                <td>
-                    <select id="rating" name="rating" required>
-                        <option value="1">⭐</option>
-                        <option value="2">⭐⭐</option>
-                        <option value="3">⭐⭐⭐</option>
-                        <option value="4">⭐⭐⭐⭐</option>
-                        <option value="5">⭐⭐⭐⭐⭐</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align: center;"><button type="submit">Submit</button></td>
-            </tr>
-        </table>
-    </form>
-</div>
+
+    <script>
+       
+    </script>
+</section> 
 
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById('testimonial-form');
-    const nameInput = document.getElementById("nama_pelanggan");
-    const emailInput = document.getElementById("email");
-    const phoneInput = document.getElementById("no_telp");
-    const reviewInput = document.getElementById("teks_ulasan");
-    const dateInput = document.getElementById("tanggal_ulasan");
-    const ratingInput = document.getElementById("rating");
-
-    form.addEventListener('submit', function (e) {
-        const name = nameInput.value;
-        const email = emailInput.value;
-        const phone = phoneInput.value;
-        const review = reviewInput.value;
-        const date = dateInput.value;
-        const rating = ratingInput.value;
-
-        // Cek apakah salah satu input kosong
-        if (name === "" || email === "" || phone === "" || review === "" || date === "" || rating === "") {
-            e.preventDefault(); // Mencegah pengiriman form jika ada input yang kosong
-
-            Swal.fire(
-                'Peringatan',
-                'Mohon untuk dilengkapi terlebih dahulu!',
-                'warning'
-            );
-        } else {
-            Swal.fire(
-                'Good job!',
-                'Send Message success!',
-                'success'
-            );
-        }
-    });
-});
-
-</script>
 
 </section>
 
