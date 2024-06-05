@@ -96,7 +96,7 @@
       <h1 class=".font-large" data-aos="fade-down-right">Selamat Datang di <span id="typing-text"></span><span id="cursor">|</span></h1>
       <p class=".font-medium" data-aos="zoom-in-down">Temukan berbagai pilihan seni kuku terbaik kami dan nikmati desain yang menawan. <br>
         Dapatkan penawaran eksklusif dan pengalaman layanan di toko kami.</p>
-      <a href="#about" type="button" class="button btn-hero" data-aos="fade-up-right">Get Started</a>
+      <a href="#about" type="button" class="button btn-hero"  data-aos="fade-up-right">Get Started</a>
     </div>
   </section>
   <!-- Akhiran saiful assist salsabila -->

@@ -68,7 +68,7 @@ function type() {
   if (charIndex < textArray[textIndex].length) {
     const span = document.createElement("span");
     span.textContent = textArray[textIndex].charAt(charIndex);
-    span.style.color = "#0d6efd";
+    span.style.color = "#FFD0D0";
     typingText.appendChild(span);
     charIndex++;
     setTimeout(type, 100);
