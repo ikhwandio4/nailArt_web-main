@@ -1,4 +1,8 @@
-
+<?php
+include 'koneksi.php';
+$query = "SELECT * from katalog_harga";
+$result = mysqli_query($conn, $query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,6 +52,10 @@
   <link rel="stylesheet" href="./assets/css/footer.css">
   <link rel="stylesheet" href="./assets/css/style-faq.css">
   <link rel="stylesheet" href="./assets/css/style-hero.css">
+  <!-- modal -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -195,7 +203,7 @@
                     </figure>
 
                     <div class="product-info">
-                        <h4 class="product-text-style-4"><a href="#">Desain Sederhana 1</a></h4>
+                        <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain Sederhana 1</a></h4>
                         <span class="bold">Harga:</span><br>Mulai Rp 50.000 - 150.000<br>
                         <span class="bold">Deskripsi:</span><br>Desain kuku sederhana dengan tampilan elegan dan minimalis. Cocok untuk sehari-hari.
                     </div>
@@ -209,7 +217,7 @@
                     </figure>
 
                     <div class="product-info">
-                        <h4 class="product-text-style-4"><a href="#">Desain Floral 1</a></h4>
+                        <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain Floral 1</a></h4>
                         <span class="bold">Harga:</span><br>Mulai Rp 100.000 - 200.000<br>
                         <span class="bold">Deskripsi:</span><br>Desain kuku floral dengan motif bunga yang indah dan berwarna-warni. Cocok untuk acara spesial.
                     </div>
@@ -223,7 +231,7 @@
                     </figure>
 
                     <div class="product-info">
-                        <h4 class="product-text-style-4"><a href="#">Desain Glitter 1</a></h4>
+                        <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain Glitter 1</a></h4>
                         <span class="bold">Harga:</span><br>Mulai Rp 120.000 - 250.000<br>
                         <span class="bold">Deskripsi:</span><br>Desain kuku dengan glitter yang memberikan efek berkilauan dan glamor. Cocok untuk pesta dan acara khusus.
                     </div>
@@ -237,7 +245,7 @@
                     </figure>
 
                     <div class="product-info">
-                        <h4 class="product-text-style-4"><a href="#">Desain 3D 1</a></h4>
+                        <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain 3D 1</a></h4>
                         <span class="bold">Harga:</span><br>Mulai Rp 150.000 - 300.000<br>
                         <span class="bold">Deskripsi:</span><br>Desain kuku 3D dengan aksen yang menonjol dan kreatif. Memberikan tampilan yang unik dan menarik.
                     </div>
@@ -251,7 +259,7 @@
                     </figure>
 
                     <div class="product-info">
-                        <h4 class="product-text-style-4"><a href="#">Desain Sederhana 2</a></h4>
+                        <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain Sederhana 2</a></h4>
                         <span class="bold">Harga:</span><br>Mulai Rp 50.000 - 150.000<br>
                         <span class="bold">Deskripsi:</span><br>Desain kuku sederhana dengan variasi warna yang elegan dan stylish.
                     </div>
@@ -265,7 +273,7 @@
                     </figure>
 
                     <div class="product-info">
-                        <h4 class="product-text-style-4"><a href="#">Desain Floral 2</a></h4>
+                        <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain Floral 2</a></h4>
                         <span class="bold">Harga:</span><br>Mulai Rp 100.000 - 200.000<br>
                         <span class="bold">Deskripsi:</span><br>Desain kuku floral dengan sentuhan artistik yang elegan dan feminin.
                     </div>
@@ -279,7 +287,7 @@
                     </figure>
 
                     <div class="product-info">
-                        <h4 class="product-text-style-4"><a href="#">Desain Glitter 2</a></h4>
+                        <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain Glitter 2</a></h4>
                         <span class="bold">Harga:</span><br>Mulai Rp 120.000 - 250.000<br>
                         <span class="bold">Deskripsi:</span><br>Desain kuku glitter dengan kombinasi warna yang menawan dan mewah.
                     </div>
@@ -293,7 +301,7 @@
                     </figure>
 
                     <div class="product-info">
-                        <h4 class="product-text-style-4"><a href="#">Desain 3D 2</a></h4>
+                        <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain 3D 2</a></h4>
                         <span class="bold">Harga:</span><br>Mulai Rp 150.000 - 300.000<br>
                         <span class="bold">Deskripsi:</span><br>Desain kuku 3D dengan detail yang rumit dan indah, menciptakan tampilan yang memikat.
                     </div>
@@ -307,7 +315,7 @@
                     </figure>
 
                     <div class="product-info">
-                        <h4 class="product-text-style-4"><a href="#">Desain 3D 3</a></h4>
+                        <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain 3D 3</a></h4>
                         <span class="bold">Harga:</span><br>Mulai Rp 150.000 - 300.000<br>
                         <span class="bold">Deskripsi:</span><br>Desain kuku 3D dengan aksen yang unik dan penuh gaya, memberikan kesan yang memukau.
                     </div>
@@ -316,6 +324,91 @@
 
         </div>
     </div>
+
+    <!-- modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="orderModalLabel">Form Pemesanan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="orderForm" action="order.php" method="POST">
+            <div class="form-group">
+              <label for="customerName">Nama Pelanggan</label>
+              <input type="text" class="form-control" id="customerName" name="customerName" placeholder="Masukkan nama Anda" required>
+            </div>
+            <div class="form-group">
+              <label for="phoneNumber">No Telp</label>
+              <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Masukkan nomor telepon Anda" required>
+              </div>
+              <div class="form-group">
+                <label for="address">Alamat</label>
+                <input class="form-control" id="address" name="address" placeholder="Masukkan alamat Anda" required>
+                </div>
+                <div class="form-group">
+                  <label for="treatment">Nama Treatment</label>
+                  <select class="form-control" id="treatment" name="treatment" required>
+                <option value="" disabled selected>Pilih treatment</option>
+                <?php while ($row = mysqli_fetch_assoc($result)) {
+                  echo "<option value='" . $row['nama_treatment'] . "'>" . $row['nama_treatment'] . "</option>";
+                } ?>
+              </select>
+                </div>
+            <div class="form-group">
+              <label for="quantity">Jumlah</label>
+              <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Masukkan jumlah pesanan" required>
+            </div>
+            <div class="form-group">
+              <label for="price">Harga</label>
+              <input type="number" class="form-control" id="price" name="price" placeholder="Masukkan harga" required>
+            </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" name="submit" class="btn btn-primary" form="orderForm">Submit Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    var globalHarga = 0;
+      $('#treatment').change(function() {
+          var treatment = $(this).val();
+          
+          // Kirim permintaan AJAX untuk mendapatkan harga
+          $.ajax({
+            url: 'get_harga.php',
+            type: 'GET',
+            data: { treatment: treatment },
+            success: function(response) {
+              $('#price').val(parseFloat(response)); // Setel harga sesuai respons dari server
+              globalHarga = parseFloat(response);
+              console.log("Price: ",response);
+            // console.log("Treatment: ",treatment);
+              }
+          });
+      });
+
+      $('#quantity').keyup(function() {
+          var quantity = $(this).val();
+          
+          // Hitung total harga berdasarkan jumlah
+          var totalHarga = globalHarga * quantity;
+          $('#price').val(parseFloat(totalHarga));
+        console.log("totalHarga: ",totalHarga);
+        console.log("Quantity: ",harga);
+          });
+  });
+  </script>
+
 </section>
 
   <!-- Akhiran  -->
