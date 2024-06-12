@@ -661,10 +661,7 @@ $result = mysqli_query($conn, $query);
       <div class="row rounded-3 border">
         <div class="col-md-5 m-0 p-0">
           <div class="map-container">
-            <iframe
-              src="https://www.google.com/maps/place/Ohmynailart/@-7.9316242,112.5955793,17.5z/data=!4m6!3m5!1s0x2e788321e96749ef:0x9d8855b1ab5aac5e!8m2!3d-7.9316718!4d112.5969618!16s%2Fg%2F11swcry0mn?entry=ttu"
-              width="100%" height="400px" frameborder="0" style="border: 0" title="maps" allowfullscreen>
-            </iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3951.6495252517984!2d112.5955793!3d-7.9316242!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e788321e96749ef%3A0x9d8855b1ab5aac5e!2sOhmynailart!5e0!3m2!1sid!2sid!4v1718200098057!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
         <div class="col-md-7 m-0 p-3 keterangan-maps">
