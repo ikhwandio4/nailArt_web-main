@@ -512,7 +512,8 @@ $result = mysqli_query($conn, $query);
 
 
 
-<section id="testimonial-form" style="padding: 50px 0; background: #fff;">
+<!-- <section id="testimonial-form" style="padding: 50px 0; background: #fff;"> -->
+  <div style="padding: 50px 0; background: #fff;">
     <div class="container form-container">
         <div class="section-title form-title">
             <h2>Submit Your Testimonial</h2>
@@ -561,7 +562,8 @@ $result = mysqli_query($conn, $query);
     <script>
        
     </script>
-</section> 
+  </div>
+<!-- </section>  -->
 
 
 
