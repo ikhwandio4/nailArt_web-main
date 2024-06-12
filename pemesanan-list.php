@@ -1,12 +1,11 @@
 <?php
-// Include file database connection
-include 'pelanggan.php';
+// Include the file containing the database connection and functions
+include 'pemesanan.php'; // This should be renamed to a more relevant file name, e.g., pemesanan.php
 
-// Get search query from URL if available
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 
 // Get filtered customer data based on search query
-$pelanggan = ($search != '') ? cariPelanggan($search) : ambilPelanggan();
+$pemesanan = ($search != '') ? cariPemesanan($search) : ambilPemesanan();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +14,7 @@ $pelanggan = ($search != '') ? cariPelanggan($search) : ambilPelanggan();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Data Pelanggan</title>
+    <title>Data Pemesanan</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Custom Stylesheet -->
@@ -25,7 +24,7 @@ $pelanggan = ($search != '') ? cariPelanggan($search) : ambilPelanggan();
         .content-body {
             margin-left: 250px;
             /* Adjust this value to match the width of your sidebar */
-            padding: 5px;
+            padding: 20px;
         }
     </style>
 </head>
@@ -33,13 +32,14 @@ $pelanggan = ($search != '') ? cariPelanggan($search) : ambilPelanggan();
 <body>
     <!-- Include sidebar -->
     <?php require 'sidebar.php'; ?>
+
     <div class="content-body">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">List Data Pelanggan</h4>
+                            <h4 class="card-title">List Data Pemesanan</h4>
                             <form action="" method="GET" class="mb-3">
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="search" placeholder="Cari...">
@@ -48,33 +48,29 @@ $pelanggan = ($search != '') ? cariPelanggan($search) : ambilPelanggan();
                                     </div>
                                 </div>
                             </form>
-                            <a href="pelanggan-add.php" class="btn btn-primary mb-3">Tambah</a>
+                            <a href="pemesanan-add.php" class="btn btn-primary mb-3">Tambah</a>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Nama</th>
-                                            <th>Email</th>
-                                            <th>No. HP</th>
-                                            <th>Alamat</th>
-                                            <th>Jenis Kelamin</th>
+                                            <th>ID Pelanggan</th>
+                                            <th>Tanggal Pemesanan</th>
+                                            <th>Waktu Pemesanan</th>
+                                            <th>ID Desain</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        foreach ($pelanggan as $p) {
+                                        foreach ($pemesanan as $p) {
                                             echo "<tr>";
                                             echo "<td>" . $p['id_pelanggan'] . "</td>";
-                                            echo "<td>" . $p['nama_pelanggan'] . "</td>";
-                                            echo "<td>" . $p['email'] . "</td>";
-                                            echo "<td>" . $p['no_telp'] . "</td>";
-                                            echo "<td>" . $p['alamat'] . "</td>";
-                                            echo "<td>" . $p['jenis_kelamin'] . "</td>";
+                                            echo "<td>" . $p['tanggal_pemesanan'] . "</td>";
+                                            echo "<td>" . $p['waktu_pemesanan'] . "</td>";
+                                            echo "<td>" . $p['id_desain'] . "</td>";
                                             echo "<td>";
-                                            echo "<a href='pelanggan-edit.php?id=" . $p['id_pelanggan'] . "' class='btn btn-sm btn-warning'>Edit</a> ";
-                                            echo "<a href='pelanggan.php?hapus=" . $p['id_pelanggan'] . "' class='btn btn-sm btn-danger' name='hapus' onclick='return confirm(\"Apakah Anda yakin ingin menghapus pelanggan ini?\")'>Hapus</a>";
+                                            echo "<a href='pemesanan-edit.php?id=" . $p['id_pemesanan'] . "' class='btn btn-sm btn-warning'>Edit</a> ";
+                                            echo "<a href='pelanggan.php?hapus_pemesanan=" . $p['id_pemesanan'] . "' class='btn btn-sm btn-danger' name='hapus_pemesanan' onclick='return confirm(\"Apakah Anda yakin ingin menghapus pemesanan ini?\")'>Hapus</a>";
                                             echo "</td>";
                                             echo "</tr>";
                                         }

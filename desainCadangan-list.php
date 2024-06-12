@@ -1,7 +1,10 @@
 <?php
 // Include the file containing the database connection and functions
 include 'desainCadangan.php';
+$search = isset($_GET['search']) ? $_GET['search'] : '';
 
+// Get filtered customer data based on search query
+$desain = ($search != '') ? cariDesain($search) : ambilDesain();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +39,14 @@ include 'desainCadangan.php';
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">List Data Desain Cadangan</h4>
+                            <form action="" method="GET" class="mb-3">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="search" placeholder="Cari...">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">Cari</button>
+                                    </div>
+                                </div>
+                            </form>
                             <a href="desainCadangan-add.php" class="btn btn-primary mb-3">Tambah</a>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
@@ -48,7 +59,6 @@ include 'desainCadangan.php';
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $desain = ambilDesain();
                                         foreach ($desain as $d) {
                                             echo "<tr>";
                                             echo "<td>" . $d['nama_desain'] . "</td>";
@@ -70,4 +80,5 @@ include 'desainCadangan.php';
         </div>
     </div>
 </body>
+
 </html>

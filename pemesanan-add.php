@@ -5,14 +5,18 @@ include 'koneksi.php';
 // Ambil data desain dari tabel desain_cadangan
 $queryDesain = "SELECT * FROM desain_cadangan";
 $resultDesain = mysqli_query($conn, $queryDesain);
+$queryPelanggan = "SELECT * FROM pelanggan";
+$resultPelanggan = mysqli_query($conn, $queryPelanggan);
 ?>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Tambah Katalog Harga</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Pemesanan</title>
+    <link rel="shortcut icon" type="image/png" href="/assets/images/lainnya/logo.jpg" />
+    <link rel="stylesheet" href="./Modernize-bootstrap-free-main/src/assets/css/styles.min.css" />
 </head>
 
 <body>
@@ -70,10 +74,31 @@ $resultDesain = mysqli_query($conn, $queryDesain);
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title fw-semibold mb-4">Forms</h5>
+                            <h5 class="card-title fw-semibold mb-4">Form Pemesanan</h5>
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="katalogHarga.php" method="POST">
+                                    <form action="pemesanan.php" method="POST">
+                                        <div class="mb-3">
+                                            <label for="id_pelanggan" class="form-label">Pelanggan</label>
+                                            <select class="form-control" id="id_pelanggan" name="id_pelanggan" aria-describedby="idPelangganHelp">
+                                                <?php
+                                                while ($rowPelanggan = mysqli_fetch_assoc($resultPelanggan)) {
+                                                    echo "<option value='{$rowPelanggan['id_pelanggan']}'>{$rowPelanggan['nama_pelanggan']}</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                            <div id="idPelangganHelp" class="form-text">Pilih Pelanggan.</div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="tanggalPemesanan" class="form-label">Tanggal Pemesanan</label>
+                                            <input type="date" class="form-control" id="tanggalPemesanan" name="tanggal_pemesanan" aria-describedby="tanggalPemesananHelp">
+                                            <div id="tanggalPemesananHelp" class="form-text">Masukkan tanggal pemesanan.</div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="waktuPemesanan" class="form-label">Waktu Pemesanan</label>
+                                            <input type="time" class="form-control" id="waktuPemesanan" name="waktu_pemesanan" aria-describedby="waktuPemesananHelp">
+                                            <div id="waktuPemesananHelp" class="form-text">Masukkan waktu pemesanan.</div>
+                                        </div>
                                         <div class="mb-3">
                                             <label for="id_desain" class="form-label">ID Desain</label>
                                             <select class="form-control" id="id_desain" name="id_desain" aria-describedby="idDesainHelp">
@@ -85,17 +110,8 @@ $resultDesain = mysqli_query($conn, $queryDesain);
                                             </select>
                                             <div id="idDesainHelp" class="form-text">Pilih ID desain.</div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="nama_treatment" class="form-label">Nama Treatment</label>
-                                            <input type="text" class="form-control" id="nama_treatment" name="nama_treatment" aria-describedby="namaHelp">
-                                            <div id="namaHelp" class="form-text">Masukkan nama treatment.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="harga" class="form-label">Harga</label>
-                                            <input type="text" class="form-control" id="harga" name="harga" aria-describedby="hargaHelp">
-                                            <div id="hargaHelp" class="form-text">Masukkan harga.</div>
-                                        </div>
-                                        <button type="submit" name="tambah" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary" name="tambah">Submit</button>
+                                        <a href="pemesanan-list.php" class="btn btn-secondary">Kembali</a>
                                     </form>
                                 </div>
                             </div>
@@ -103,7 +119,13 @@ $resultDesain = mysqli_query($conn, $queryDesain);
                     </div>
                 </div>
             </div>
-
+        </div>
+    </div>
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
 </body>
 
 </html>

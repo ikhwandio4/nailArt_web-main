@@ -14,12 +14,39 @@ function tambahPelanggan($nama_pelanggan, $no_telp, $alamat, $email, $jenis_kela
     mysqli_query($koneksi, $query);
 }
 
-// Fungsi untuk mengambil data pelanggan
-function ambilPelanggan() {
+function cariPelanggan($keyword)
+{
     global $koneksi;
-    $query = "SELECT id_pelanggan, nama_pelanggan, no_telp, alamat, email, jenis_kelamin FROM pelanggan";
-    $result = mysqli_query($koneksi, $query);
-    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    // Escape the keyword to prevent SQL injection
+    $keyword = mysqli_real_escape_string($koneksi, $keyword);
+
+    // Query to search for customers
+    $sql = "SELECT * FROM pelanggan WHERE nama_pelanggan LIKE '%$keyword%' OR email LIKE '%$keyword%' OR no_telp LIKE '%$keyword%'";
+
+    $result = mysqli_query($koneksi, $sql);
+
+    $pelanggan = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $pelanggan[] = $row;
+    }
+
+    return $pelanggan;
+}
+// Fungsi untuk mengambil data pelanggan
+function ambilPelanggan()
+{
+    global $koneksi;
+    // Query to retrieve all customers
+    $sql = "SELECT * FROM pelanggan";
+
+    $result = mysqli_query($koneksi, $sql);
+
+    $pelanggan = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $pelanggan[] = $row;
+    }
+
+    return $pelanggan;
 }
 
 // Fungsi untuk mengubah data pelanggan
@@ -30,10 +57,37 @@ function ubahPelanggan($id_pelanggan, $nama_pelanggan, $no_telp, $alamat,$email,
 }
 
 // Fungsi untuk menghapus data pelanggan
-function hapusPelanggan($id_pelanggan) {
+function hapusPelanggan($id_pelanggan)
+{
     global $koneksi;
-    $query = "DELETE FROM pelanggan WHERE id_pelanggan=$id_pelanggan";
-    mysqli_query($koneksi, $query);
+
+    // Start transaction
+    mysqli_begin_transaction($koneksi);
+
+    try {
+        // Delete from related tables
+        $queryPemesanan = "DELETE FROM pemesanan WHERE id_pelanggan=$id_pelanggan";
+        mysqli_query($koneksi, $queryPemesanan);
+
+        $queryPenjualan = "DELETE FROM penjualan WHERE id_pelanggan=$id_pelanggan";
+        mysqli_query($koneksi, $queryPenjualan);
+
+        $queryUlasan = "DELETE FROM ulasan WHERE id_pelanggan=$id_pelanggan";
+        mysqli_query($koneksi, $queryUlasan);
+
+        // Delete from pelanggan table
+        $queryPelanggan = "DELETE FROM pelanggan WHERE id_pelanggan=$id_pelanggan";
+        mysqli_query($koneksi, $queryPelanggan);
+
+        // Commit transaction
+        mysqli_commit($koneksi);
+
+        echo "Data pelanggan dan semua data terkait berhasil dihapus.";
+    } catch (Exception $e) {
+        // Rollback transaction if any query fails
+        mysqli_rollback($koneksi);
+        echo "Gagal menghapus data: " . $e->getMessage();
+    }
 }
 
 // Proses tambah data pelanggan

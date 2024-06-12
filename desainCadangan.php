@@ -24,6 +24,25 @@ function ambilDesain()
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+function cariDesain($keyword)
+{
+    global $koneksi;
+    // Escape the keyword to prevent SQL injection
+    $keyword = mysqli_real_escape_string($koneksi, $keyword);
+
+    // Query to search for customers
+    $sql = "SELECT * FROM desain_cadangan WHERE nama_desain LIKE '%$keyword'";
+
+    $result = mysqli_query($koneksi, $sql);
+
+    $desain = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $desain[] = $row;
+    }
+
+    return $desain;
+}
+
 // Fungsi untuk mengubah data desain cadangan
 function ubahDesain($id_desain, $nama_desain, $deskripsi_desain)
 {
@@ -36,8 +55,34 @@ function ubahDesain($id_desain, $nama_desain, $deskripsi_desain)
 function hapusDesain($id_desain)
 {
     global $koneksi;
-    $query = "DELETE FROM desain_cadangan WHERE id_desain=$id_desain";
-    mysqli_query($koneksi, $query);
+
+    // Start transaction
+    mysqli_begin_transaction($koneksi);
+
+    try {
+        // Delete from related tables
+        $queryPenjualan = "DELETE FROM penjualan WHERE id_desain=$id_desain";
+        mysqli_query($koneksi, $queryPenjualan);
+
+        $queryPemesanan = "DELETE FROM pemesanan WHERE id_desain=$id_desain";
+        mysqli_query($koneksi, $queryPemesanan);
+
+        $queryKatalogHarga = "DELETE FROM katalog_harga WHERE id_desain=$id_desain";
+        mysqli_query($koneksi, $queryKatalogHarga);
+
+        // Delete from desain_cadangan table
+        $queryDesain = "DELETE FROM desain_cadangan WHERE id_desain=$id_desain";
+        mysqli_query($koneksi, $queryDesain);
+
+        // Commit transaction
+        mysqli_commit($koneksi);
+
+        echo "Data desain dan semua data terkait berhasil dihapus.";
+    } catch (Exception $e) {
+        // Rollback transaction if any query fails
+        mysqli_rollback($koneksi);
+        echo "Gagal menghapus data: " . $e->getMessage();
+    }
 }
 
 // Proses tambah data desain cadangan

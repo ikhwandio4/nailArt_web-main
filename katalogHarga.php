@@ -24,6 +24,25 @@ function ambilKatalog()
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+function cariKatalog($keyword)
+{
+    global $koneksi;
+    // Escape the keyword to prevent SQL injection
+    $keyword = mysqli_real_escape_string($koneksi, $keyword);
+
+    // Query to search for customers
+    $sql = "SELECT * FROM katalog_harga WHERE nama_treatment LIKE '%$keyword%' OR harga LIKE '%$keyword%'";
+
+    $result = mysqli_query($koneksi, $sql);
+
+    $katalog = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $katalog[] = $row;
+    }
+
+    return $katalog;
+}
+
 // Fungsi untuk mengubah data katalog harga
 function ubahKatalog($id_katalog, $id_desain, $nama_treatment, $harga)
 {

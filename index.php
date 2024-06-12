@@ -87,7 +87,7 @@
             <a class="nav-link" href="#kontak">Contact</a>            
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./sidebar.php">Admin</a>            
+            <a class="nav-link" href="login.php">Login</a>            
           </li>
         </ul>
       </div>
