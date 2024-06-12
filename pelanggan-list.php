@@ -55,10 +55,8 @@ $pelanggan = ($search != '') ? cariPelanggan($search) : ambilPelanggan();
                                         <tr>
                                             <th>ID</th>
                                             <th>Nama</th>
-                                            <th>Email</th>
                                             <th>No. HP</th>
                                             <th>Alamat</th>
-                                            <th>Jenis Kelamin</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -68,10 +66,8 @@ $pelanggan = ($search != '') ? cariPelanggan($search) : ambilPelanggan();
                                             echo "<tr>";
                                             echo "<td>" . $p['id_pelanggan'] . "</td>";
                                             echo "<td>" . $p['nama_pelanggan'] . "</td>";
-                                            echo "<td>" . $p['email'] . "</td>";
                                             echo "<td>" . $p['no_telp'] . "</td>";
                                             echo "<td>" . $p['alamat'] . "</td>";
-                                            echo "<td>" . $p['jenis_kelamin'] . "</td>";
                                             echo "<td>";
                                             echo "<a href='pelanggan-edit.php?id=" . $p['id_pelanggan'] . "' class='btn btn-sm btn-warning'>Edit</a> ";
                                             echo "<a href='pelanggan.php?hapus=" . $p['id_pelanggan'] . "' class='btn btn-sm btn-danger' name='hapus' onclick='return confirm(\"Apakah Anda yakin ingin menghapus pelanggan ini?\")'>Hapus</a>";

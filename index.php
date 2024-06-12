@@ -88,6 +88,9 @@ $result = mysqli_query($conn, $query);
             <a class="nav-link" href="#testimonial">Booking</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#testimoni">Ulasan</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#kontak">Contact</a>
           </li>
           <li class="nav-item">
@@ -407,148 +410,31 @@ $result = mysqli_query($conn, $query);
 
   </section>
 
-  <!-- Akhiran  -->
-
   <style>
-    .text-center {
-      text-align: center;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .testimonial-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      font-size: 1em;
-      min-width: 400px;
-    }
-
-    .testimonial-table th,
-    .testimonial-table td {
-      padding: 12px 15px;
+  .testimonial-card {
       border: 1px solid #ddd;
-      text-align: left;
-    }
-
-    .testimonial-table th {
-      background-color: #f4f4f4;
-    }
-
-    .testimonial-table tbody tr:nth-of-type(even) {
-      background-color: #f9f9f9;
-    }
-
-    .testimonial-table tbody tr:hover {
-      background-color: #f1f1f1;
-    }
-  </style>
-
-
-
-  <article id="testimoni" class="card judul">
-
-    <div class="testimonial-container" id="testimonials-container">
-      <!-- Testimonials will be inserted here -->
-    </div>
-
-    <h1 class="text-center">Ulasan</h1>
-
-    <table class="testimonial-table" id="testimonial-table">
-      <thead>
-        <tr>
-          <th>Nama Pelanggan</th>
-          <th>Teks Ulasan</th>
-          <th>Tanggal Ulasan</th>
-        </tr>
-      </thead>
-      <tbody id="testimonial-tbody">
-        <!-- Ulasan will be inserted here -->
-      </tbody>
-    </table>
-
-    <script>
-      // Fetch the ulasan
-      fetch('fetch_testimoni.php')
-        .then(response => response.json())
-        .then(data => {
-          const tbody = document.getElementById('testimonial-tbody');
-          let currentIndex = 0;
-
-          function displayTestimonials() {
-            tbody.innerHTML = ''; // Clear the table body
-            for (let i = 0; i < 3; i++) {
-              const testimonial = data[(currentIndex + i) % data.length];
-              const row = document.createElement('tr');
-
-              const nameCell = document.createElement('td');
-              nameCell.textContent = testimonial.nama_pelanggan;
-
-              const reviewCell = document.createElement('td');
-              reviewCell.innerHTML = `&quot;${testimonial.teks_ulasan}&quot;`;
-
-              const dateCell = document.createElement('td');
-              dateCell.textContent = testimonial.tanggal_ulasan;
-
-              row.appendChild(nameCell);
-              row.appendChild(reviewCell);
-              row.appendChild(dateCell);
-
-              tbody.appendChild(row);
-            }
-            currentIndex = (currentIndex + 3) % data.length;
-          }
-
-          displayTestimonials(); // Initial display
-          setInterval(displayTestimonials, 5000); // Update every 5 seconds
-        })
-        .catch(error => console.error('Error fetching testimonials:', error));
-    </script>
-  </article>
-
-  <style>
-    .testimonial-card {
-      background-color: #fff;
-      border: 1px solid #eaeaea;
       border-radius: 5px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      margin: 15px;
+      text-align: center;
+      flex: 0 0 auto;
+      width: 300px;
     }
-
     .testimonial-card img {
-      width: 100px;
-      /* Adjust the width as needed */
-      height: 100px;
-      /* Adjust the height as needed */
       border-radius: 50%;
-      /* To make the image round */
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
       margin-bottom: 10px;
     }
-
-    .testimonial-card h3 {
-      margin-top: 0;
-      color: #333;
-    }
-
-    .testimonial-card p {
-      margin-bottom: 10px;
-      color: #666;
-    }
-
-    .testimonial-card span {
-      color: #999;
-      font-size: 0.8em;
+    .testimonial-cards-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
     }
   </style>
 
-  <article id="testimoni" class="card judul">
-
+<article id="testimoni" class="card judul">
     <div class="testimonial-container" id="testimonials-container">
       <!-- Testimonials will be inserted here -->
     </div>
@@ -558,101 +444,101 @@ $result = mysqli_query($conn, $query);
     <div class="testimonial-cards-container">
       <!-- Testimonial cards will be inserted here -->
     </div>
+  </article>
 
-    <article id="testimoni" class="card judul">
+  <script>
+    // Fetch the ulasan
+    fetch('fetch_testimoni.php')
+      .then(response => response.json())
+      .then(data => {
+        const cardsContainer = document.querySelector('.testimonial-cards-container');
+        let currentIndex = 0;
 
-      <div class="testimonial-container" id="testimonials-container">
-        <!-- Testimonials will be inserted here -->
-      </div>
+        function displayTestimonials() {
+          cardsContainer.innerHTML = ''; // Clear the cards container
+          for (let i = 0; i < data.length; i++) {
+            const testimonial = data[i];
 
-      <h1 class="text-center">Ulasan</h1>
+            const card = document.createElement('div');
+            card.classList.add('testimonial-card');
 
-      <div class="testimonial-cards-container">
-        <!-- Testimonial cards will be inserted here -->
-      </div>
+            const img = document.createElement('img');
+            img.src = './assets/images/lainnya/person.jpg'; // Corrected line// Add the image source
 
-      <script>
-        // Fetch the ulasan
-        fetch('fetch_testimoni.php')
-          .then(response => response.json())
-          .then(data => {
-            const cardsContainer = document.querySelector('.testimonial-cards-container');
-            let currentIndex = 0;
+            const name = document.createElement('h3');
+            name.textContent = testimonial.nama_pelanggan;
 
-            function displayTestimonials() {
-              cardsContainer.innerHTML = ''; // Clear the cards container
-              for (let i = 0; i < 3; i++) {
-                const testimonial = data[(currentIndex + i) % data.length];
+            const review = document.createElement('p');
+            review.textContent = testimonial.teks_ulasan;
 
-                const card = document.createElement('div');
-                card.classList.add('testimonial-card');
+            const date = document.createElement('span');
+            date.textContent = testimonial.tanggal_ulasan;
 
-                const img = document.createElement('img');
-                img.src = testimonial.gambar_pelanggan; // Add the image source
+            card.appendChild(img); // Append the image
+            card.appendChild(name);
+            card.appendChild(review);
+            card.appendChild(date);
 
-                const name = document.createElement('h3');
-                name.textContent = testimonial.nama_pelanggan;
+            cardsContainer.appendChild(card);
+          }
+        }
 
-                const review = document.createElement('p');
-                review.textContent = testimonial.teks_ulasan;
+        displayTestimonials(); // Initial display
 
-                const date = document.createElement('span');
-                date.textContent = testimonial.tanggal_ulasan;
+        function scrollTestimonials() {
+          const firstCardWidth = document.querySelector('.testimonial-card').offsetWidth;
+          cardsContainer.scrollBy({ left: firstCardWidth, behavior: 'smooth' });
 
-                card.appendChild(img); // Append the image
-                card.appendChild(name);
-                card.appendChild(review);
-                card.appendChild(date);
+          currentIndex = (currentIndex + 1) % data.length;
 
-                cardsContainer.appendChild(card);
-              }
-              currentIndex = (currentIndex + 3) % data.length;
-            }
+          if (currentIndex === 0) {
+            cardsContainer.scrollTo({ left: 0, behavior: 'smooth' });
+          }
+        }
 
-            displayTestimonials(); // Initial display
-            setInterval(displayTestimonials, 5000); // Update every 5 seconds
-          })
-          .catch(error => console.error('Error fetching testimonials:', error));
-      </script>
-    </article>
+        setInterval(scrollTestimonials, 5000); // Scroll every 5 seconds
+      })
+      .catch(error => console.error('Error fetching testimonials:', error));
+  </script>
 
+<style>
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: lighter;
+      cursor: pointer;
+    }
 
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-    <style>
-      .rating {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: center;
-      }
+    .rating {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
 
-      .rating input {
-        display: none;
-      }
+    .rating input[type="radio"] {
+      display: none;
+    }
 
-      .rating label {
-        font-size: 2rem;
-        color: lightgray;
-        cursor: pointer;
-        transition: color 0.2s;
-      }
+    .rating label {
+      color: #ccc; /* Mengubah warna bintang menjadi abu-abu sebelum ditekan */
+      cursor: pointer;
+      font-size: 2em;
+    }
 
-      .rating input:checked~label {
-        color: gold;
-      }
-
-      .rating label:hover,
-      .rating label:hover~label {
-        color: gold;
-      }
-
-      .rating input:checked~label,
-      .rating input:checked+label:hover,
-      .rating input:checked~label:hover,
-      .rating input:checked~label:hover~label {
-        color: gold;
-
-      }
-    </style>
+    .rating label:hover,
+    .rating label:hover ~ label,
+    .rating input[type="radio"]:checked ~ label {
+      color: blue; /* Mengubah warna bintang menjadi biru saat dihover atau ditekan */
+    }
+  </style>
     <!-- <section id="testimonial-form" style="padding: 50px 0; background: #fff;"> -->
     <div style="padding: 50px 0; background: #fff;">
       <div class="container form-container">
@@ -704,26 +590,7 @@ $result = mysqli_query($conn, $query);
           </table>
         </form>
       </div>
-
-      <script>
-
-      </script>
     </div>
-    <!-- </section>  -->
-
-
-
-    </section>
-
-
-
-
-    <!-- Akhiran aan -->
-
-    <!-- Awalan salsabila -->
-
-    <!-- Akhiran salsabila -->
-
     <!-- Awalan rajendra -->
 
     <section id="location">
