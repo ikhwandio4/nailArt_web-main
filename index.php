@@ -484,13 +484,13 @@ $result = mysqli_query($conn, $query);
                     const row = document.createElement('tr');
 
                     const nameCell = document.createElement('td');
-                    nameCell.textContent = testimonial.nama;
+                    nameCell.textContent = testimonial.nama_pelanggan;
 
                     const reviewCell = document.createElement('td');
-                    reviewCell.innerHTML = `&quot;${testimonial.ulasan}&quot;`;
+                    reviewCell.innerHTML = `&quot;${testimonial.teks_ulasan}&quot;`;
 
                     const dateCell = document.createElement('td');
-                    dateCell.textContent = testimonial.tanggal;
+                    dateCell.textContent = testimonial.tanggal_ulasan;
 
                     row.appendChild(nameCell);
                     row.appendChild(reviewCell);
