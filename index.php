@@ -84,9 +84,7 @@ $result = mysqli_query($conn, $query);
           <li class="nav-item">
             <a class="nav-link" href="#product">Gallery</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#testimonial">Booking</a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="#testimoni">Ulasan</a>
           </li>
@@ -568,7 +566,7 @@ $result = mysqli_query($conn, $query);
               <td><input type="date" id="tanggal_ulasan" name="tanggal_ulasan" required></td>
             </tr>
             <tr>
-              <td><label for="rating">Rating</label></td>
+              <!-- <td><label for="rating">Rating</label></td>
               <td>
                 <div class="rating">
                   <input type="radio" id="star5" name="rating" value="5" />
@@ -582,7 +580,7 @@ $result = mysqli_query($conn, $query);
                   <input type="radio" id="star1" name="rating" value="1" />
                   <label for="star1" title="Sangat Buruk">⭐</label>
                 </div>
-              </td>
+              </td> -->
             </tr>
             <tr>
               <td colspan="2" style="text-align: center;"><button type="submit">Submit</button></td>

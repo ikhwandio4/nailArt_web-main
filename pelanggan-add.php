@@ -86,19 +86,6 @@ require 'sidebar.php';
                                             <input type="text" class="form-control" id="alamat" name="alamat" aria-describedby="alamatHelp">
                                             <div id="alamatHelp" class="form-text">Masukkan alamat pelanggan.</div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">Email address</label>
-                                            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-                                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                            <select class="form-control" id="jenisKelamin" name="jenis_kelamin" aria-describedby="jenis_kelaminHelp">
-                                                <option value="Laki-laki">Laki-laki</option>
-                                                <option value="Perempuan">Perempuan</option>
-                                            </select>
-                                            <div id="jenis_kelaminHelp" class="form-text">Pilih jenis kelamin pelanggan.</div>
-                                        </div>
                                         <button type="submit" class="btn btn-primary" name="tambah">Submit</button>
                                         <a href="pelanggan-list.php" class="btn btn-secondary">Kembali</a>
                                     </form>

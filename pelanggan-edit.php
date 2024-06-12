@@ -43,10 +43,8 @@ $data = mysqli_fetch_assoc($result);
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                            <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Download Free</a>
                             <li class="nav-item dropdown">
                                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                     <div class="message-body">
@@ -94,19 +92,6 @@ $data = mysqli_fetch_assoc($result);
                                             <label for="alamat" class="form-label">Alamat</label>
                                             <input type="text" class="form-control" id="alamat" name="alamat" aria-describedby="alamatHelp" value="<?php echo htmlspecialchars($data['alamat']); ?>">
                                             <div id="alamatHelp" class="form-text">Masukkan alamat pelanggan.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">Email address</label>
-                                            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="<?php echo htmlspecialchars($data['email']); ?>">
-                                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                            <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" aria-describedby="jenis_kelamin">
-                                                <option value="Laki-laki" <?php echo (isset($data['jenis_kelamin']) && $data['jenis_kelamin'] == 'Laki-laki') ? 'selected' : ''; ?>>Laki-laki</option>
-                                                <option value="Perempuan" <?php echo (isset($data['jenis_kelamin']) && $data['jenis_kelamin'] == 'Perempuan') ? 'selected' : ''; ?>>Perempuan</option>
-                                            </select>
-                                            <div id="jenis_kelamin" class="form-text">Pilih jenis kelamin pelanggan.</div>
                                         </div>
                                         <button type="submit" name="ubah" class="btn btn-primary">Submit</button>
                                     </form>

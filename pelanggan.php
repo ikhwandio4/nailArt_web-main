@@ -8,9 +8,9 @@ $database = "ohmynailart";
 $koneksi = mysqli_connect($host, $user, $password, $database);
 
 // Fungsi untuk menambahkan data pelanggan
-function tambahPelanggan($nama_pelanggan, $no_telp, $alamat, $email, $jenis_kelamin) {
+function tambahPelanggan($nama_pelanggan, $no_telp, $alamat) {
     global $koneksi;
-    $query = "INSERT INTO pelanggan (nama_pelanggan, no_telp, alamat, email, jenis_kelamin) VALUES ('$nama_pelanggan', '$no_telp', '$alamat', '$email', '$jenis_kelamin')";
+    $query = "INSERT INTO pelanggan (nama_pelanggan, no_telp, alamat) VALUES ('$nama_pelanggan', '$no_telp', '$alamat')";
     mysqli_query($koneksi, $query);
 }
 
@@ -21,7 +21,7 @@ function cariPelanggan($keyword)
     $keyword = mysqli_real_escape_string($koneksi, $keyword);
 
     // Query to search for customers
-    $sql = "SELECT * FROM pelanggan WHERE nama_pelanggan LIKE '%$keyword%' OR email LIKE '%$keyword%' OR no_telp LIKE '%$keyword%'";
+    $sql = "SELECT * FROM pelanggan WHERE nama_pelanggan LIKE '%$keyword%' OR no_telp LIKE '%$keyword%'";
 
     $result = mysqli_query($koneksi, $sql);
 
@@ -50,9 +50,9 @@ function ambilPelanggan()
 }
 
 // Fungsi untuk mengubah data pelanggan
-function ubahPelanggan($id_pelanggan, $nama_pelanggan, $no_telp, $alamat,$email, $jenis_kelamin) {
+function ubahPelanggan($id_pelanggan, $nama_pelanggan, $no_telp, $alamat) {
     global $koneksi;
-    $query = "UPDATE pelanggan SET nama_pelanggan='$nama_pelanggan', no_telp='$no_telp', alamat='$alamat', email='$email', jenis_kelamin='$jenis_kelamin' WHERE id_pelanggan=$id_pelanggan";
+    $query = "UPDATE pelanggan SET nama_pelanggan='$nama_pelanggan', no_telp='$no_telp', alamat='$alamat',  WHERE id_pelanggan=$id_pelanggan";
     mysqli_query($koneksi, $query);
 }
 
@@ -93,11 +93,9 @@ function hapusPelanggan($id_pelanggan)
 // Proses tambah data pelanggan
 if (isset($_POST['tambah'])) {
     $nama_pelanggan = $_POST['nama_pelanggan'];
-    $email = $_POST['email'];
     $no_telp = $_POST['no_telp'];
     $alamat = $_POST['alamat'];
-    $jenis_kelamin = $_POST['jenis_kelamin'];
-    tambahPelanggan($nama_pelanggan,$no_telp,$alamat, $email, $jenis_kelamin);
+    tambahPelanggan($nama_pelanggan,$no_telp,$alamat);
     header("Location: pelanggan-list.php");
     exit();
 }
@@ -106,11 +104,9 @@ if (isset($_POST['tambah'])) {
 if (isset($_POST['ubah'])) {
     $id_pelanggan = $_POST['id_pelanggan'];
     $nama_pelanggan = $_POST['nama_pelanggan'];
-    $email = $_POST['email'];
     $no_telp = $_POST['no_telp'];
     $alamat = $_POST['alamat'];
-    $jenis_kelamin = $_POST['jenis_kelamin'];
-    ubahPelanggan($id_pelanggan, $nama_pelanggan, $no_telp, $alamat,$email, $jenis_kelamin);
+    ubahPelanggan($id_pelanggan, $nama_pelanggan, $no_telp, $alamat);
     header("Location: pelanggan-list.php");
     exit();
 }
