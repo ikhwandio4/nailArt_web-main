@@ -7,11 +7,16 @@ $database = "ohmynailart";
 
 $koneksi = mysqli_connect($host, $user, $password, $database);
 
+// Cek koneksi
+if (!$koneksi) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+
 // Fungsi untuk menambahkan data desain cadangan
-function tambahDesain($nama_desain, $deskripsi_desain)
+function tambahDesain($nama_desain, $deskripsi_desain, $gambar)
 {
     global $koneksi;
-    $query = "INSERT INTO desain_cadangan (nama_desain, deskripsi_desain) VALUES ('$nama_desain', '$deskripsi_desain')";
+    $query = "INSERT INTO desain_cadangan (nama_desain, deskripsi_desain, gambar) VALUES ('$nama_desain', '$deskripsi_desain', '$gambar')";
     mysqli_query($koneksi, $query);
 }
 
@@ -19,7 +24,7 @@ function tambahDesain($nama_desain, $deskripsi_desain)
 function ambilDesain()
 {
     global $koneksi;
-    $query = "SELECT id_desain, nama_desain, deskripsi_desain FROM desain_cadangan";
+    $query = "SELECT id_desain, nama_desain, deskripsi_desain, gambar FROM desain_cadangan";
     $result = mysqli_query($koneksi, $query);
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
@@ -44,10 +49,10 @@ function cariDesain($keyword)
 }
 
 // Fungsi untuk mengubah data desain cadangan
-function ubahDesain($id_desain, $nama_desain, $deskripsi_desain)
+function ubahDesain($id_desain, $nama_desain, $deskripsi_desain, $gambar)
 {
     global $koneksi;
-    $query = "UPDATE desain_cadangan SET nama_desain='$nama_desain', deskripsi_desain='$deskripsi_desain' WHERE id_desain=$id_desain";
+    $query = "UPDATE desain_cadangan SET nama_desain='$nama_desain', deskripsi_desain='$deskripsi_desain', gambar='$gambar' WHERE id_desain=$id_desain";
     mysqli_query($koneksi, $query);
 }
 
@@ -89,9 +94,33 @@ function hapusDesain($id_desain)
 if (isset($_POST['tambah'])) {
     $nama_desain = $_POST['nama_desain'];
     $deskripsi_desain = $_POST['deskripsi_desain'];
-    tambahDesain($nama_desain, $deskripsi_desain);
-    header("Location: desainCadangan-list.php");
-    exit();
+
+    // Handling the image upload
+    if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] == 0) {
+        $upload_dir = 'uploads/';
+        // Check if the directory exists, if not, try to create it
+        if (!is_dir($upload_dir)) {
+            if (!mkdir($upload_dir, 0755, true)) {
+                die("Failed to create upload directory.");
+            }
+        }
+        $file_name = basename($_FILES['gambar']['name']);
+        $target_file = $upload_dir . $file_name;
+
+        // You can add checks here for file type, size, etc.
+        if (move_uploaded_file($_FILES['gambar']['tmp_name'], $target_file)) {
+            // File uploaded successfully
+            // Save the file path in your database
+            $gambar_path = $target_file;
+            tambahDesain($nama_desain, $deskripsi_desain, $gambar_path);
+            echo "Data desain berhasil disimpan.";
+        } else {
+            // Handle upload error
+            echo "Gagal mengunggah gambar.";
+        }
+    } else {
+        echo "Tidak ada file gambar yang diunggah.";
+    }
 }
 
 // Proses ubah data desain cadangan
@@ -99,7 +128,8 @@ if (isset($_POST['ubah'])) {
     $id_desain = $_POST['id_desain'];
     $nama_desain = $_POST['nama_desain'];
     $deskripsi_desain = $_POST['deskripsi_desain'];
-    ubahDesain($id_desain, $nama_desain, $deskripsi_desain);
+    $gambar = $_POST['gambar'];
+    ubahDesain($id_desain, $nama_desain, $deskripsi_desain, $gambar);
     header("Location: desainCadangan-list.php");
     exit();
 }

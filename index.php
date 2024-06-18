@@ -189,7 +189,7 @@ $result = mysqli_query($conn, $query);
         </div>
       </div>
 
-      <div class="row product-container">
+      <!-- <div class="row product-container">
 
         <div class="col-lg-4 col-md-6 product-item filter-Desain-Sederhana" data-aos="zoom-in" data-aos-delay="200">
           <div class="product-wrap">
@@ -317,7 +317,38 @@ $result = mysqli_query($conn, $query);
           </div>
         </div>
 
-      </div>
+      </div> -->
+      <?php
+      include 'desaincadangan.php';
+
+      $designs = ambilDesain();
+      ?>
+      <div class="row product-container">
+        <?php foreach ($designs as $design): ?>
+            <?php
+            // Use null coalescing operator to provide default values
+            $id_desain = htmlspecialchars($design['id_desain'] ?? '');
+            $nama_desain = htmlspecialchars($design['nama_desain'] ?? 'Nama tidak tersedia');
+            $deskripsi_desain = htmlspecialchars($design['deskripsi_desain'] ?? 'Deskripsi tidak tersedia');
+            $gambar = htmlspecialchars($design['gambar'] ?? './assets/images/default.jpg'); // Default image
+            $category = htmlspecialchars($design['category'] ?? 'Uncategorized'); // Assuming you have a category field
+            $price_range = htmlspecialchars($design['price_range'] ?? 'Harga tidak tersedia');
+            ?>
+            <div class="col-lg-4 col-md-6 product-item filter-<?php echo $category; ?>" data-aos="zoom-in" data-aos-delay="200">
+                <div class="product-wrap">
+                    <figure>
+                        <img src="<?php echo $gambar; ?>" class="img-fluid" alt="">
+                    </figure>
+                    <div class="product-info">
+                        <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal"><?php echo $nama_desain; ?></a></h4>
+                        <span class="bold">Harga:</span><br><?php echo $price_range; ?><br>
+                        <span class="bold">Deskripsi:</span><br><?php echo $deskripsi_desain; ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    </div>
     </div>
 
     <!-- modal -->

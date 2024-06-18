@@ -70,19 +70,25 @@ require 'sidebar.php';
                             <h5 class="card-title fw-semibold mb-4">Forms</h5>
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="desainCadangan.php" method="POST">
-                                        <div class="mb-3">
-                                            <label for="nama_desain" class="form-label">Nama Desain</label>
-                                            <input type="text" class="form-control" id="nama_desain" name="nama_desain" aria-describedby="namaHelp">
-                                            <div id="namaHelp" class="form-text">Masukkan nama desain.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="deskripsi_desain" class="form-label">Deskripsi Desain</label>
-                                            <textarea class="form-control" id="deskripsi_desain" name="deskripsi_desain" aria-describedby="deskripsiHelp"></textarea>
-                                            <div id="deskripsiHelp" class="form-text">Masukkan deskripsi desain.</div>
-                                        </div>
-                                        <button type="submit" name="tambah" class="btn btn-primary">Submit</button>
-                                    </form>
+                                <form action="desainCadangan.php" method="POST" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <label for="nama_desain" class="form-label">Nama Desain</label>
+                                        <input type="text" class="form-control" id="nama_desain" name="nama_desain" aria-describedby="namaHelp">
+                                        <div id="namaHelp" class="form-text">Masukkan nama desain.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="deskripsi_desain" class="form-label">Deskripsi Desain</label>
+                                        <textarea class="form-control" id="deskripsi_desain" name="deskripsi_desain" aria-describedby="deskripsiHelp"></textarea>
+                                        <div id="deskripsiHelp" class="form-text">Masukkan deskripsi desain.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gambar" class="form-label">Gambar Desain</label>
+                                        <input type="file" class="form-control" id="gambar" name="gambar" aria-describedby="gambarHelp">
+                                        <div id="gambarHelp" class="form-text">Unggah gambar desain.</div>
+                                    </div>
+                                    <button type="submit" name="tambah" class="btn btn-primary">Submit</button>
+                                    <a href="desainCadangan-list.php" class="btn btn-secondary">Kembali</a>
+                                </form>
                                 </div>
                             </div>
                         </div>

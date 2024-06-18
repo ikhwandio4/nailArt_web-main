@@ -78,20 +78,26 @@ $data = mysqli_fetch_assoc($result);
                             <h5 class="card-title fw-semibold mb-4">Forms</h5>
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="desainCadangan.php" method="POST">
-                                        <input type="hidden" name="id_desain" value="<?php echo htmlspecialchars($data['id_desain'] ?? ''); ?>">
-                                        <div class="mb-3">
-                                            <label for="nama_desain" class="form-label">Nama Desain</label>
-                                            <input type="text" class="form-control" id="nama_desain" name="nama_desain" aria-describedby="namaHelp" value="<?php echo htmlspecialchars($data['nama_desain']); ?>">
-                                            <div id="namaHelp" class="form-text">Masukkan nama desain.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="deskripsi_desain" class="form-label">Deskripsi Desain</label>
-                                            <textarea class="form-control" id="deskripsi_desain" name="deskripsi_desain" aria-describedby="deskripsiHelp"><?php echo htmlspecialchars($data['deskripsi_desain']); ?></textarea>
-                                            <div id="deskripsiHelp" class="form-text">Masukkan deskripsi desain.</div>
-                                        </div>
-                                        <button type="submit" name="ubah" class="btn btn-primary">Submit</button>
-                                    </form>
+                                <form action="desainCadangan.php" method="POST" enctype="multipart/form-data">
+                                    <input type="hidden" name="id_desain" value="<?php echo htmlspecialchars($data['id_desain'] ?? ''); ?>">
+                                    <div class="mb-3">
+                                        <label for="nama_desain" class="form-label">Nama Desain</label>
+                                        <input type="text" class="form-control" id="nama_desain" name="nama_desain" aria-describedby="namaHelp" value="<?php echo htmlspecialchars($data['nama_desain']); ?>">
+                                        <div id="namaHelp" class="form-text">Masukkan nama desain.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="deskripsi_desain" class="form-label">Deskripsi Desain</label>
+                                        <textarea class="form-control" id="deskripsi_desain" name="deskripsi_desain" aria-describedby="deskripsiHelp"><?php echo htmlspecialchars($data['deskripsi_desain']); ?></textarea>
+                                        <div id="deskripsiHelp" class="form-text">Masukkan deskripsi desain.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gambar" class="form-label">Gambar Desain</label>
+                                        <input type="file" class="form-control" id="gambar" name="gambar" aria-describedby="gambarHelp">
+                                        <div id="gambarHelp" class="form-text">Unggah gambar desain (kosongkan jika tidak ingin mengubah).</div>
+                                    </div>
+                                    <button type="submit" name="ubah" class="btn btn-primary">Submit</button>
+                                </form>
+
                                 </div>
                             </div>
                         </div>
