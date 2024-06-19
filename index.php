@@ -189,8 +189,41 @@ $result = mysqli_query($conn, $query);
         </div>
       </div>
 
+<style>
+  .product-wrap {
+    position: relative;
+    overflow: hidden;
+}
 
-      <?php
+.product-image {
+    width: 100%;
+    height: 400px; /* Adjust the height as needed */
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    padding: 10px;
+}
+
+.product-text-style-4 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+figure {
+    width: 100%;
+    height: 400px; /* Ensure figure has the same height as the image */
+    margin: 0; /* Remove default margin */
+}
+
+</style>
+<?php
 include 'desaincadangan.php';
 
 $designs = ambilDesain2();
@@ -209,7 +242,7 @@ $designs = ambilDesain2();
     <div class="col-lg-4 col-md-6 product-item filter-<?php echo $category; ?>" data-aos="zoom-in" data-aos-delay="200" data-id="<?php echo $id_desain; ?>" data-name="<?php echo $nama_desain; ?>" data-price="<?php echo $harga; ?>">
         <div class="product-wrap">
             <figure>
-                <img src="<?php echo $gambar; ?>" class="img-fluid" alt="">
+                <img src="<?php echo $gambar; ?>" class="img-fluid product-image" alt="">
             </figure>
             <div class="product-info">
                 <h4 class="product-text-style-4"><a href="#" class="open-modal" data-toggle="modal" data-target="#orderModal"><?php echo $nama_desain; ?></a></h4>
@@ -220,6 +253,7 @@ $designs = ambilDesain2();
     </div>
 <?php endforeach; ?>
 </div>
+
 
 <!-- Modal Pemesanan -->
 <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
@@ -564,55 +598,6 @@ $(document).ready(function() {
         $('#price').val(totalPrice);
     });
 
-    $('#orderForm').on('submit', function(e) {
-        e.preventDefault();
-        var formData = $(this).serialize();
-
-        // Send the form data using AJAX
-        $.ajax({
-            url: 'order.php',
-            type: 'POST',
-            data: formData,
-            dataType: 'json',
-            success: function(response) {
-                if (response.success) {
-                    // Display success message using SweetAlert
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Order Berhasil',
-                        text: 'Your order is being processed. Please wait for admin confirmation.',
-                        showCancelButton: true,
-                        confirmButtonText: 'Beri Ulasan',
-                        cancelButtonText: 'Tidak, Terima Kasih'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            // Close order modal
-                            $('#orderModal').modal('hide');
-                            // Show review form
-                            $('#reviewFormContainer').show();
-                        } else {
-                            window.location.href = 'index.php'; // Redirect to homepage
-                        }
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Order Failed',
-                        text: response.message,
-                    });
-                }
-            },
-            error: function(xhr, status, error) {
-                console.log("Error: " + error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Something went wrong with the order submission.'
-                });
-            }
-        });
-    });
-
   </script>
 
 
@@ -675,6 +660,8 @@ $(document).ready(function() {
 .star.filled {
     color: gold;
 
+}
+
 /* Optional: Custom tooltip styles */
 .star:hover::after {
     content: attr(title);
@@ -688,7 +675,15 @@ $(document).ready(function() {
     transform: translateX(-50%);
     white-space: nowrap;
 }
+  
+    .card-img-top {
+    width: 100%;
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensures the image covers the space while maintaining its aspect ratio */
+}
 
+.card {
+    margin-bottom: 20px; /* Adds some space between cards */
 }
 
 </style>

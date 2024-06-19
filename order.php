@@ -48,8 +48,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                  VALUES ($customerId, $productId, CURDATE(), '$orderTime', $quantity, $price)";
 
             if (mysqli_query($conn, $insertOrderQuery)) {
-                $response['success'] = true;
-                $response['message'] = "Order submitted successfully!";
+                // Get the inserted penjualan ID
+                $penjualanId = mysqli_insert_id($conn);
+
+                // Insert data into pemesanan table
+                $insertPemesananQuery = "INSERT INTO pemesanan (id_pemesanan, id_pelanggan, tanggal_pemesanan, waktu_pemesanan, id_desain)
+                                         VALUES ($penjualanId, $customerId, CURDATE(), '$orderTime', $productId)";
+                
+                if (mysqli_query($conn, $insertPemesananQuery)) {
+                    $response['success'] = true;
+                    $response['message'] = "Order and pemesanan submitted successfully!";
+                } else {
+                    $response['message'] = "Error submitting pemesanan: " . mysqli_error($conn);
+                }
             } else {
                 $response['message'] = "Error submitting order: " . mysqli_error($conn);
             }
