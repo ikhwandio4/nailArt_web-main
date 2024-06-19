@@ -48,31 +48,39 @@ $penjualan = ($search != '') ? cariPenjualan($search) : ambilPenjualan();
                                     </div>
                                 </div>
                             </form>
-                            <a href="penjualan-add.php" class="btn btn-primary mb-3">Tambah</a>
+                            <!-- <a href="penjualan-add.php" class="btn btn-primary mb-3">Tambah</a> -->
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
-                                        <tr>
+                                    <tr>
+                                            <th>No</th>
                                             <th>Nama Pelanggan</th>
                                             <th>Nama Desain</th>
-                                            <th>Tanggal Penjualan</th>
-                                            <th>Nama Treatment</th>
+                                            <th>Tanggal Pemesanan</th>
+                                            <th>Waktu Pemesanan</th>
+                                            <th>Jumlah</th>
+                                            <th>Harga Total</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
+                                         $no = 1;
                                         foreach ($penjualan as $p) {
                                             echo "<tr>";
-                                            echo "<td>" . $p['nama_pelanggan'] . "</td>";
-                                            echo "<td>" . $p['nama_desain'] . "</td>";
-                                            echo "<td>" . $p['tanggal_penjualan'] . "</td>";
-                                            echo "<td>" . $p['nama_treatment'] . "</td>";
+                                            echo "<td>" . $no . "</td>";
+                                            echo "<td>" . htmlspecialchars($p['nama_pelanggan']) . "</td>";
+                                            echo "<td>" . htmlspecialchars($p['nama_desain']) . "</td>";
+                                            echo "<td>" . htmlspecialchars($p['tanggal_pemesanan']) . "</td>";
+                                            echo "<td>" . htmlspecialchars($p['waktu_pemesanan']) . "</td>";
+                                            echo "<td>" . htmlspecialchars($p['jumlah']) . "</td>";
+                                            echo "<td>" . htmlspecialchars($p['harga_total']) . "</td>";
                                             echo "<td>";
                                             echo "<a href='penjualan-edit.php?id=" . $p['id_penjualan'] . "' class='btn btn-sm btn-warning'>Edit</a> ";
                                             echo "<a href='penjualan.php?hapus=" . $p['id_penjualan'] . "' class='btn btn-sm btn-danger' name='hapus' onclick='return confirm(\"Apakah Anda yakin ingin menghapus penjualan ini?\")'>Hapus</a>";
                                             echo "</td>";
                                             echo "</tr>";
+                                            $no++;
                                         }
                                         ?>
                                     </tbody>

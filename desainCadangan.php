@@ -19,15 +19,29 @@ function tambahDesain($nama_desain, $deskripsi_desain, $gambar)
     $query = "INSERT INTO desain_cadangan (nama_desain, deskripsi_desain, gambar) VALUES ('$nama_desain', '$deskripsi_desain', '$gambar')";
     mysqli_query($koneksi, $query);
 }
-
-// Fungsi untuk mengambil data desain cadangan
 function ambilDesain()
 {
+global $koneksi;
+$query = "SELECT id_desain, nama_desain, deskripsi_desain, gambar FROM desain_cadangan";
+$result = mysqli_query($koneksi, $query);
+return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+
+// Fungsi untuk mengambil data desain cadangan
+function ambilDesain2()
+{
     global $koneksi;
-    $query = "SELECT id_desain, nama_desain, deskripsi_desain, gambar FROM desain_cadangan";
+    // Query SQL dengan JOIN untuk menggabungkan tabel desain_cadangan dan katalog_harga
+    $query = "
+        SELECT d.id_desain, d.nama_desain, d.deskripsi_desain, d.gambar, k.harga 
+        FROM desain_cadangan d 
+        JOIN katalog_harga k ON d.id_desain = k.id_desain
+    ";
     $result = mysqli_query($koneksi, $query);
+    // Mengembalikan hasil query sebagai array asosiatif
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
+
 
 function cariDesain($keyword)
 {
@@ -121,6 +135,8 @@ if (isset($_POST['tambah'])) {
     } else {
         echo "Tidak ada file gambar yang diunggah.";
     }
+    header("Location: desainCadangan-list.php");
+    exit();
 }
 
 // Proses ubah data desain cadangan

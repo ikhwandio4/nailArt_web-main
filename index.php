@@ -319,123 +319,230 @@ $result = mysqli_query($conn, $query);
 
       </div> -->
       <?php
-      include 'desaincadangan.php';
+include 'desaincadangan.php';
 
-      $designs = ambilDesain();
-      ?>
-      <div class="row product-container">
-        <?php foreach ($designs as $design): ?>
-            <?php
-            // Use null coalescing operator to provide default values
-            $id_desain = htmlspecialchars($design['id_desain'] ?? '');
-            $nama_desain = htmlspecialchars($design['nama_desain'] ?? 'Nama tidak tersedia');
-            $deskripsi_desain = htmlspecialchars($design['deskripsi_desain'] ?? 'Deskripsi tidak tersedia');
-            $gambar = htmlspecialchars($design['gambar'] ?? './assets/images/default.jpg'); // Default image
-            $category = htmlspecialchars($design['category'] ?? 'Uncategorized'); // Assuming you have a category field
-            $price_range = htmlspecialchars($design['price_range'] ?? 'Harga tidak tersedia');
-            ?>
-            <div class="col-lg-4 col-md-6 product-item filter-<?php echo $category; ?>" data-aos="zoom-in" data-aos-delay="200">
-                <div class="product-wrap">
-                    <figure>
-                        <img src="<?php echo $gambar; ?>" class="img-fluid" alt="">
-                    </figure>
-                    <div class="product-info">
-                        <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal"><?php echo $nama_desain; ?></a></h4>
-                        <span class="bold">Harga:</span><br><?php echo $price_range; ?><br>
-                        <span class="bold">Deskripsi:</span><br><?php echo $deskripsi_desain; ?>
-                    </div>
-                </div>
+$designs = ambilDesain2();
+?>
+<div class="row product-container">
+<?php foreach ($designs as $design): ?>
+    <?php
+    // Use null coalescing operator to provide default values
+    $id_desain = htmlspecialchars($design['id_desain'] ?? '');
+    $nama_desain = htmlspecialchars($design['nama_desain'] ?? 'Nama tidak tersedia');
+    $deskripsi_desain = htmlspecialchars($design['deskripsi_desain'] ?? 'Deskripsi tidak tersedia');
+    $gambar = htmlspecialchars($design['gambar'] ?? './assets/images/default.jpg'); // Default image
+    $category = htmlspecialchars($design['category'] ?? 'Uncategorized'); // Assuming you have a category field
+    $harga = htmlspecialchars($design['harga'] ?? 'Harga tidak tersedia');
+    ?>
+    <div class="col-lg-4 col-md-6 product-item filter-<?php echo $category; ?>" data-aos="zoom-in" data-aos-delay="200" data-id="<?php echo $id_desain; ?>" data-name="<?php echo $nama_desain; ?>" data-price="<?php echo $harga; ?>">
+        <div class="product-wrap">
+            <figure>
+                <img src="<?php echo $gambar; ?>" class="img-fluid" alt="">
+            </figure>
+            <div class="product-info">
+                <h4 class="product-text-style-4"><a href="#" class="open-modal" data-toggle="modal" data-target="#orderModal"><?php echo $nama_desain; ?></a></h4>
+                <span class="bold">Harga:</span><br><?php echo $harga; ?><br>
+                <span class="bold">Deskripsi:</span><br><?php echo $deskripsi_desain; ?>
             </div>
-        <?php endforeach; ?>
-    </div>
-    </div>
-    </div>
-
-    <!-- modal -->
-    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="orderModalLabel">Form Pemesanan</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form id="orderForm" action="order.php" method="POST">
-              <div class="form-group">
-                <label for="customerName">Nama Pelanggan</label>
-                <input type="text" class="form-control" id="customerName" name="customerName" placeholder="Masukkan nama Anda" required>
-              </div>
-              <div class="form-group">
-                <label for="phoneNumber">No Telp</label>
-                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Masukkan nomor telepon Anda" required>
-              </div>
-              <div class="form-group">
-                <label for="address">Alamat</label>
-                <input class="form-control" id="address" name="address" placeholder="Masukkan alamat Anda" required>
-              </div>
-              <div class="form-group">
-                <label for="treatment">Nama Treatment</label>
-                <select class="form-control" id="treatment" name="treatment" required>
-                  <option value="" disabled selected>Pilih treatment</option>
-                  <?php while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<option value='" . $row['nama_treatment'] . "'>" . $row['nama_treatment'] . "</option>";
-                  } ?>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="quantity">Jumlah</label>
-                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Masukkan jumlah pesanan" required>
-              </div>
-              <div class="form-group">
-                <label for="price">Harga</label>
-                <input type="number" class="form-control" id="price" name="price" placeholder="Masukkan harga" required>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="submit" class="btn btn-primary" form="orderForm">Submit Order</button>
-          </div>
         </div>
-      </div>
     </div>
+<?php endforeach; ?>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        var globalHarga = 0;
-        $('#treatment').change(function() {
-          var treatment = $(this).val();
+<!-- Modal Pemesanan -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderModalLabel">Form Pemesanan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="orderForm" method="POST">
+                    <input type="hidden" id="productId" name="productId">
+                    <input type="hidden" id="productName" name="productName">
+                    <input type="hidden" id="productPrice" name="productPrice">
+                    <input type="hidden" id="orderTime" name="orderTime">
+                    <!-- Customer Information Fields -->
+                    <div class="form-group">
+                        <label for="customerName">Nama Pelanggan</label>
+                        <input type="text" class="form-control" id="customerName" name="customerName" placeholder="Masukkan nama Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">No Telp</label>
+                        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Masukkan nomor telepon Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Alamat</label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Masukkan alamat Anda" required>
+                    </div>
+                    <!-- Quantity and Price Fields -->
+                    <div class="form-group">
+                        <label for="quantity">Jumlah</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Masukkan jumlah pesanan" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Total Harga</label>
+                        <input type="number" class="form-control" id="price" name="price" placeholder="Masukkan harga" readonly>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" form="orderForm">Submit Order</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-          // Kirim permintaan AJAX untuk mendapatkan harga
-          $.ajax({
-            url: 'get_harga.php',
-            type: 'GET',
-            data: {
-              treatment: treatment
-            },
+<!-- Form Ulasan -->
+<div id="reviewFormContainer" style="display: none;">
+    <h3>Form Ulasan</h3>
+    <form id="reviewForm" action="review.php" method="POST">
+        <div class="form-group">
+            <label for="rating">Rating</label>
+            <input type="number" class="form-control" id="rating" name="rating" placeholder="Masukkan rating Anda" required>
+        </div>
+        <div class="form-group">
+            <label for="review">Ulasan</label>
+            <textarea class="form-control" id="review" name="review" placeholder="Masukkan ulasan Anda" required></textarea>
+        </div>
+        <button type="submit" name="submitReview" class="btn btn-primary">Submit Review</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+  $(document).ready(function() {
+    var unitPrice = 0;
+
+    $('.open-modal').on('click', function() {
+        var productItem = $(this).closest('.product-item');
+        var productId = productItem.data('id');
+        var productName = productItem.data('name');
+        var productPrice = productItem.data('price');
+
+        unitPrice = parseFloat(productPrice); // Store the unit price
+
+        $('#productId').val(productId);
+        $('#productName').val(productName);
+        $('#productPrice').val(productPrice);
+        $('#price').val(productPrice); // Set the price field with unit price
+        $('#orderTime').val(new Date().toISOString()); // Set the current time
+    });
+
+    $('#quantity').on('input', function() {
+        var quantity = $(this).val();
+
+        // Calculate the total price based on quantity
+        var totalPrice = unitPrice * quantity;
+        $('#price').val(totalPrice);
+    });
+
+    $('#orderForm').on('submit', function(e) {
+        e.preventDefault();
+        var formData = $(this).serialize();
+
+        // Send the form data using AJAX
+        $.ajax({
+            url: 'order.php',
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
             success: function(response) {
-              $('#price').val(parseFloat(response)); // Setel harga sesuai respons dari server
-              globalHarga = parseFloat(response);
-              console.log("Price: ", response);
-              // console.log("Treatment: ",treatment);
+                if (response.success) {
+                    // Display success message using SweetAlert
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Order Berhasil',
+                        text: 'Your order is being processed. Please wait for admin confirmation.',
+                        showCancelButton: true,
+                        confirmButtonText: 'Beri Ulasan',
+                        cancelButtonText: 'Tidak, Terima Kasih'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Close order modal
+                            $('#orderModal').modal('hide');
+                            // Show review form
+                            $('#reviewFormContainer').show();
+                        } else {
+                            window.location.href = 'index.php'; // Redirect to homepage
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Order Failed',
+                        text: response.message,
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log("Error: " + error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Something went wrong with the order submission.'
+                });
             }
-          });
         });
+    });
 
-        $('#quantity').keyup(function() {
-          var quantity = $(this).val();
+    $('#reviewForm').on('submit', function(e) {
+        e.preventDefault();
+        var formData = $(this).serialize();
 
-          // Hitung total harga berdasarkan jumlah
-          var totalHarga = globalHarga * quantity;
-          $('#price').val(parseFloat(totalHarga));
-          console.log("totalHarga: ", totalHarga);
-          console.log("Quantity: ", harga);
+        // Validate form data
+        var rating = $('#rating').val();
+        var review = $('#review').val().trim();
+
+        if (rating === '' || review === '') {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Isi Semua Field',
+                text: 'Mohon isi rating dan ulasan Anda.',
+            });
+            return;
+        }
+
+        // Send review data using AJAX
+        $.ajax({
+            url: 'review.php', // Ganti dengan URL yang sesuai untuk menerima data ulasan
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            success: function(response) {
+                Swal.fire({
+                    icon: response.success ? 'success' : 'error',
+                    title: response.success ? 'Ulasan Berhasil Dikirim' : 'Gagal Mengirim Ulasan',
+                    text: response.message,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Clear form fields
+                        $('#rating').val('');
+                        $('#review').val('');
+
+                        // Hide the review form
+                        $('#reviewFormContainer').hide();
+                    }
+                });
+            },
+            error: function(xhr, status, error) {
+                console.log("Error: " + error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Something went wrong with the review submission.'
+                });
+            }
         });
-      });
-    </script>
+    });
+});
+</script>
+
 
   </section>
 
@@ -468,7 +575,7 @@ $result = mysqli_query($conn, $query);
       <!-- Testimonials will be inserted here -->
     </div>
 
-    <h1 class="text-center">Ulasan</h1>
+    <h1 class="text-center">Ulasan Pelanggan</h1>
 
     <div class="testimonial-cards-container">
       <!-- Testimonial cards will be inserted here -->
@@ -476,100 +583,63 @@ $result = mysqli_query($conn, $query);
   </article>
 
   <script>
-    // Fetch the ulasan
-    fetch('fetch_testimoni.php')
-      .then(response => response.json())
-      .then(data => {
-        const cardsContainer = document.querySelector('.testimonial-cards-container');
-        let currentIndex = 0;
+  // Fetch the ulasan
+  fetch('fetch_testimoni.php')
+    .then(response => response.json())
+    .then(data => {
+      const cardsContainer = document.querySelector('.testimonial-cards-container');
+      let currentIndex = 0;
 
-        function displayTestimonials() {
-          cardsContainer.innerHTML = ''; // Clear the cards container
-          for (let i = 0; i < data.length; i++) {
-            const testimonial = data[i];
+      function displayTestimonials() {
+        cardsContainer.innerHTML = ''; // Clear the cards container
+        for (let i = 0; i < data.length; i++) {
+          const testimonial = data[i];
 
-            const card = document.createElement('div');
-            card.classList.add('testimonial-card');
+          const card = document.createElement('div');
+          card.classList.add('testimonial-card');
 
-            const img = document.createElement('img');
-            img.src = './assets/images/lainnya/person.jpg'; // Corrected line// Add the image source
+          const img = document.createElement('img');
+          img.src = './assets/images/lainnya/person.jpg'; // Add the image source
 
-            const name = document.createElement('h3');
-            name.textContent = testimonial.nama_pelanggan;
+          const name = document.createElement('h3');
+          name.textContent = testimonial.review;
 
-            const review = document.createElement('p');
-            review.textContent = testimonial.teks_ulasan;
+          const review = document.createElement('p');
+          review.textContent = testimonial.rating;
 
-            const date = document.createElement('span');
-            date.textContent = testimonial.tanggal_ulasan;
+          const date = document.createElement('span');
+          date.textContent = testimonial.waktu;
 
-            card.appendChild(img); // Append the image
-            card.appendChild(name);
-            card.appendChild(review);
-            card.appendChild(date);
+          card.appendChild(img); // Append the image
+          card.appendChild(name);
+          card.appendChild(review);
+          card.appendChild(date);
 
-            cardsContainer.appendChild(card);
-          }
+          cardsContainer.appendChild(card);
         }
+      }
 
-        displayTestimonials(); // Initial display
+      displayTestimonials(); // Initial display
 
-        function scrollTestimonials() {
-          const firstCardWidth = document.querySelector('.testimonial-card').offsetWidth;
-          cardsContainer.scrollBy({ left: firstCardWidth, behavior: 'smooth' });
+      function scrollTestimonials() {
+        const firstCardWidth = document.querySelector('.testimonial-card').offsetWidth;
+        cardsContainer.scrollBy({ left: firstCardWidth, behavior: 'smooth' });
 
-          currentIndex = (currentIndex + 1) % data.length;
+        currentIndex = (currentIndex + 1) % data.length;
 
-          if (currentIndex === 0) {
-            cardsContainer.scrollTo({ left: 0, behavior: 'smooth' });
-          }
+        if (currentIndex === 0) {
+          cardsContainer.scrollTo({ left: 0, behavior: 'smooth' });
         }
+      }
 
-        setInterval(scrollTestimonials, 5000); // Scroll every 5 seconds
-      })
-      .catch(error => console.error('Error fetching testimonials:', error));
-  </script>
+      setInterval(scrollTestimonials, 5000); // Scroll every 5 seconds
+    })
+    .catch(error => console.error('Error fetching testimonials:', error));
+</script>
 
-<style>
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: lighter;
-      cursor: pointer;
-    }
 
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .rating {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: flex-end;
-    }
-
-    .rating input[type="radio"] {
-      display: none;
-    }
-
-    .rating label {
-      color: #ccc; /* Mengubah warna bintang menjadi abu-abu sebelum ditekan */
-      cursor: pointer;
-      font-size: 2em;
-    }
-
-    .rating label:hover,
-    .rating label:hover ~ label,
-    .rating input[type="radio"]:checked ~ label {
-      color: blue; /* Mengubah warna bintang menjadi biru saat dihover atau ditekan */
-    }
-  </style>
     <!-- <section id="testimonial-form" style="padding: 50px 0; background: #fff;"> -->
-    <div style="padding: 50px 0; background: #fff;">
+    <!-- <div style="padding: 50px 0; background: #fff;">
       <div class="container form-container">
         <div class="section-title form-title">
           <h2>Submit Your Testimonial</h2>
@@ -597,7 +667,7 @@ $result = mysqli_query($conn, $query);
               <td><input type="date" id="tanggal_ulasan" name="tanggal_ulasan" required></td>
             </tr>
             <tr>
-              <!-- <td><label for="rating">Rating</label></td>
+              <td><label for="rating">Rating</label></td>
               <td>
                 <div class="rating">
                   <input type="radio" id="star5" name="rating" value="5" />
@@ -611,7 +681,7 @@ $result = mysqli_query($conn, $query);
                   <input type="radio" id="star1" name="rating" value="1" />
                   <label for="star1" title="Sangat Buruk">⭐</label>
                 </div>
-              </td> -->
+              </td>
             </tr>
             <tr>
               <td colspan="2" style="text-align: center;"><button type="submit">Submit</button></td>
@@ -619,7 +689,7 @@ $result = mysqli_query($conn, $query);
           </table>
         </form>
       </div>
-    </div>
+    </div> -->
     <!-- Awalan rajendra -->
 
     <section id="location">

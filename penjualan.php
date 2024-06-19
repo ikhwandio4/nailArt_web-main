@@ -16,16 +16,36 @@ function tambahPenjualan($id_pelanggan, $id_desain, $tanggal_penjualan, $nama_tr
 }
 
 // Fungsi untuk mengambil data penjualan
-function ambilPenjualan()
-{
+function ambilPenjualan() {
     global $koneksi;
-    $query = "SELECT p.id_penjualan, pel.nama_pelanggan, cd.nama_desain, p.tanggal_penjualan, p.nama_treatment
-              FROM penjualan p
-              JOIN pelanggan pel ON p.id_pelanggan = pel.id_pelanggan
-              JOIN desain_cadangan cd ON p.id_desain = cd.id_desain";
+    $query = "
+        SELECT 
+            penjualan.id_penjualan, 
+            pelanggan.nama_pelanggan,
+            desain_cadangan.nama_desain, 
+            penjualan.tanggal_pemesanan, 
+            penjualan.waktu_pemesanan, 
+            penjualan.jumlah, 
+            penjualan.harga_total
+        FROM 
+            penjualan
+        JOIN
+            pelanggan ON penjualan.id_pelanggan = pelanggan.id_pelanggan
+        JOIN
+            desain_cadangan ON penjualan.id_desain = desain_cadangan.id_desain
+        ORDER BY 
+            penjualan.tanggal_pemesanan DESC
+    ";
     $result = mysqli_query($koneksi, $query);
-    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $penjualan = [];
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $penjualan[] = $row;
+        }
+    }
+    return $penjualan;
 }
+
 
 // Fungsi untuk mengubah data penjualan
 function ubahPenjualan($id_penjualan, $id_pelanggan, $id_desain, $tanggal_penjualan, $nama_treatment)
@@ -35,28 +55,45 @@ function ubahPenjualan($id_penjualan, $id_pelanggan, $id_desain, $tanggal_penjua
     mysqli_query($koneksi, $query);
 }
 
-function cariPenjualan($keyword)
-{
+function cariPenjualan($search) {
     global $koneksi;
-    // Escape the keyword to prevent SQL injection
-    $keyword = mysqli_real_escape_string($koneksi, $keyword);
-
-    // Query to search for customers
-    $sql = "SELECT p.id_penjualan, pel.nama_pelanggan, cd.nama_desain, p.tanggal_penjualan, p.nama_treatment
-              FROM penjualan p
-              JOIN pelanggan pel ON p.id_pelanggan = pel.id_pelanggan
-              JOIN desain_cadangan cd ON p.id_desain = cd.id_desain
-              WHERE tanggal_penjualan LIKE '%$keyword%' OR nama_treatment LIKE '%$keyword'";
-
-    $result = mysqli_query($koneksi, $sql);
-
+    $search = mysqli_real_escape_string($koneksi, $search);
+    $query = "
+        SELECT 
+            penjualan.id_penjualan, 
+            pelanggan.nama_pelanggan,
+            desain_cadangan.nama_desain, 
+            penjualan.tanggal_pemesanan, 
+            penjualan.waktu_pemesanan, 
+            penjualan.jumlah, 
+            penjualan.harga_total
+        FROM 
+            penjualan
+        JOIN
+            pelanggan ON penjualan.id_pelanggan = pelanggan.id_pelanggan
+        JOIN
+            desain_cadangan ON penjualan.id_desain = desain_cadangan.id_desain
+        WHERE 
+            penjualan.id_penjualan LIKE '%$search%' OR 
+            pelanggan.nama_pelanggan LIKE '%$search%' OR 
+            desain_cadangan.nama_desain LIKE '%$search%' OR 
+            penjualan.tanggal_pemesanan LIKE '%$search%' OR 
+            penjualan.waktu_pemesanan LIKE '%$search%' OR 
+            penjualan.jumlah LIKE '%$search%' OR 
+            penjualan.harga_total LIKE '%$search%'
+        ORDER BY 
+            penjualan.tanggal_pemesanan DESC
+    ";
+    $result = mysqli_query($koneksi, $query);
     $penjualan = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $penjualan[] = $row;
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $penjualan[] = $row;
+        }
     }
-
     return $penjualan;
 }
+
 // Fungsi untuk menghapus data penjualan
 function hapusPenjualan($id_penjualan)
 {

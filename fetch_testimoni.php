@@ -1,10 +1,8 @@
 <?php
 include 'koneksi.php';
 
-include 'koneksi.php';
-
 // Fetch ulasan from database
-$query = "SELECT nama_pelanggan, teks_ulasan, tanggal_ulasan FROM ulasan";
+$query = "SELECT * FROM ulasan";
 $result = $conn->query($query);
 
 $ulasans = array();
