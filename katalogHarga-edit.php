@@ -63,7 +63,8 @@ $data_lama = mysqli_fetch_assoc($resultDataLama);
                                         <input type="number" class="form-control" id="harga" name="harga" aria-describedby="hargaHelp" value="<?php echo htmlspecialchars($data_lama['harga']); ?>">
                                         <div id="hargaHelp" class="form-text">Masukkan harga.</div>
                                     </div>
-                                    <button type="submit" name="ubah" class="btn btn-primary">Update</button>
+                                    <button type="submit" name="ubah" class="btn btn-primary">Simpan</button>
+                                    <a href="katalogHarga-list.php" class="btn btn-secondary">Kembali</a>
                                 </form>
                             </div>
                         </div>

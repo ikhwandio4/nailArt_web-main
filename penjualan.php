@@ -26,7 +26,8 @@ function ambilPenjualan() {
             penjualan.tanggal_pemesanan, 
             penjualan.waktu_pemesanan, 
             penjualan.jumlah, 
-            penjualan.harga_total
+            penjualan.harga_total,
+            penjualan.status
         FROM 
             penjualan
         JOIN
@@ -46,6 +47,44 @@ function ambilPenjualan() {
     return $penjualan;
 }
 
+// Fungsi untuk mengambil detail penjualan berdasarkan id
+function ambilDetailPenjualan($id_penjualan) {
+    global $koneksi;
+    $id_penjualan = mysqli_real_escape_string($koneksi, $id_penjualan);
+    $query = "
+        SELECT 
+            penjualan.id_penjualan, 
+            pelanggan.nama_pelanggan,
+            desain_cadangan.nama_desain, 
+            penjualan.tanggal_pemesanan, 
+            penjualan.waktu_pemesanan, 
+            penjualan.jumlah, 
+            penjualan.harga_total,
+            penjualan.status
+        FROM 
+            penjualan
+        JOIN
+            pelanggan ON penjualan.id_pelanggan = pelanggan.id_pelanggan
+        JOIN
+            desain_cadangan ON penjualan.id_desain = desain_cadangan.id_desain
+        WHERE 
+            penjualan.id_penjualan = '$id_penjualan'
+    ";
+    $result = mysqli_query($koneksi, $query);
+    return mysqli_fetch_assoc($result);
+}
+function ambilPenjualanById($id_penjualan)
+{
+    global $conn;
+    $query = "SELECT * FROM penjualan WHERE id_penjualan = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "i", $id_penjualan);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $penjualan = mysqli_fetch_assoc($result);
+    mysqli_stmt_close($stmt);
+    return $penjualan;
+}
 
 // Fungsi untuk mengubah data penjualan
 function ubahPenjualan($id_penjualan, $id_pelanggan, $id_desain, $tanggal_penjualan, $nama_treatment)
@@ -55,6 +94,22 @@ function ubahPenjualan($id_penjualan, $id_pelanggan, $id_desain, $tanggal_penjua
     mysqli_query($koneksi, $query);
 }
 
+// Fungsi untuk menghapus data penjualan
+function hapusPenjualan($id_penjualan)
+{
+    global $koneksi;
+    $query = "DELETE FROM penjualan WHERE id_penjualan=$id_penjualan";
+    mysqli_query($koneksi, $query);
+}
+
+// Fungsi untuk mengupdate status penjualan
+function ubahStatusPenjualan($id_penjualan, $new_status) {
+    global $koneksi;
+    $query = "UPDATE penjualan SET status='$new_status' WHERE id_penjualan=$id_penjualan";
+    mysqli_query($koneksi, $query);
+}
+
+// Fungsi untuk mencari data penjualan berdasarkan kata kunci
 function cariPenjualan($search) {
     global $koneksi;
     $search = mysqli_real_escape_string($koneksi, $search);
@@ -66,7 +121,8 @@ function cariPenjualan($search) {
             penjualan.tanggal_pemesanan, 
             penjualan.waktu_pemesanan, 
             penjualan.jumlah, 
-            penjualan.harga_total
+            penjualan.harga_total,
+            penjualan.status
         FROM 
             penjualan
         JOIN
@@ -80,7 +136,8 @@ function cariPenjualan($search) {
             penjualan.tanggal_pemesanan LIKE '%$search%' OR 
             penjualan.waktu_pemesanan LIKE '%$search%' OR 
             penjualan.jumlah LIKE '%$search%' OR 
-            penjualan.harga_total LIKE '%$search%'
+            penjualan.harga_total LIKE '%$search%' OR
+            penjualan.status LIKE '%$search%'
         ORDER BY 
             penjualan.tanggal_pemesanan DESC
     ";
@@ -92,14 +149,6 @@ function cariPenjualan($search) {
         }
     }
     return $penjualan;
-}
-
-// Fungsi untuk menghapus data penjualan
-function hapusPenjualan($id_penjualan)
-{
-    global $koneksi;
-    $query = "DELETE FROM penjualan WHERE id_penjualan=$id_penjualan";
-    mysqli_query($koneksi, $query);
 }
 
 // Proses tambah data penjualan

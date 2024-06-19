@@ -94,6 +94,7 @@ $data = mysqli_fetch_assoc($result);
                                             <div id="alamatHelp" class="form-text">Masukkan alamat pelanggan.</div>
                                         </div>
                                         <button type="submit" name="ubah" class="btn btn-primary">Submit</button>
+                                        <a href="pelanggan-list.php" class="btn btn-secondary">Kembali</a>
                                     </form>
                                 </div>
                             </div>

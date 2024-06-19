@@ -94,6 +94,7 @@ $resultDesain = mysqli_query($conn, $queryDesain);
                                             <div id="hargaHelp" class="form-text">Masukkan harga.</div>
                                         </div>
                                         <button type="submit" name="tambah" class="btn btn-primary">Submit</button>
+                                        <a href="katalogHarga-list.php" class="btn btn-secondary">Kembali</a>   
                                     </form>
                                 </div>
                             </div>
