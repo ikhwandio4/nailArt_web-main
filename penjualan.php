@@ -35,7 +35,7 @@ function ambilPenjualan() {
         JOIN
             desain_cadangan ON penjualan.id_desain = desain_cadangan.id_desain
         ORDER BY 
-            penjualan.tanggal_pemesanan DESC
+            penjualan.id_penjualan DESC
     ";
     $result = mysqli_query($koneksi, $query);
     $penjualan = [];
@@ -69,6 +69,8 @@ function ambilDetailPenjualan($id_penjualan) {
             desain_cadangan ON penjualan.id_desain = desain_cadangan.id_desain
         WHERE 
             penjualan.id_penjualan = '$id_penjualan'
+            ORDER BY 
+            penjualan.tanggal_pemesanan DESC
     ";
     $result = mysqli_query($koneksi, $query);
     return mysqli_fetch_assoc($result);

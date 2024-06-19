@@ -78,7 +78,6 @@ $penjualan = ($search != '') ? cariPenjualan($search) : ambilPenjualan();
                                             echo "<td>" . ucfirst($p['status']) . "</td>";
                                             echo "<td>";
                                             echo "<a href='penjualan-detail.php?id=" . $p['id_penjualan'] . "' class='btn btn-sm btn-info'>Detail</a> ";
-                                            echo "<a href='penjualan-edit.php?id=" . $p['id_penjualan'] . "' class='btn btn-sm btn-warning'>Edit</a> ";
                                             echo "<a href='penjualan.php?hapus=" . $p['id_penjualan'] . "' class='btn btn-sm btn-danger' name='hapus' onclick='return confirm(\"Apakah Anda yakin ingin menghapus penjualan ini?\")'>Hapus</a>";
                                             echo "</td>";
                                             echo "</tr>";

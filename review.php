@@ -17,13 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($rating) || empty($review)) {
         $response['message'] = 'Please fill in all required fields.';
     } else {
+        // Escape data to prevent SQL injection
+        $rating = mysqli_real_escape_string($conn, $rating);
+        $review = mysqli_real_escape_string($conn, $review);
+
         // Insert review into database
         $insertReviewQuery = "INSERT INTO ulasan (rating, review) VALUES ('$rating', '$review')";
         if (mysqli_query($conn, $insertReviewQuery)) {
             $response['success'] = true;
             $response['message'] = 'Review submitted successfully.';
         } else {
-            $response['message'] = 'Failed to submit review.';
+            $response['message'] = 'Failed to submit review. Error: ' . mysqli_error($conn);
         }
     }
 }

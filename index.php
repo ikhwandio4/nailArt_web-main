@@ -86,7 +86,7 @@ $result = mysqli_query($conn, $query);
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="#testimoni">Ulasan</a>
+            <a class="nav-link" href="#testimoni">Ulasan & Best Seller</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#kontak">Contact</a>
@@ -189,135 +189,7 @@ $result = mysqli_query($conn, $query);
         </div>
       </div>
 
-      <!-- <div class="row product-container">
 
-        <div class="col-lg-4 col-md-6 product-item filter-Desain-Sederhana" data-aos="zoom-in" data-aos-delay="200">
-          <div class="product-wrap">
-            <figure>
-              <img src="./assets/images/produk/kuku1.jpg" class="img-fluid" alt="">
-            </figure>
-
-            <div class="product-info">
-              <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain Sederhana 1</a></h4>
-              <span class="bold">Harga:</span><br>Mulai Rp 50.000 - 150.000<br>
-              <span class="bold">Deskripsi:</span><br>Desain kuku sederhana dengan tampilan elegan dan minimalis. Cocok untuk sehari-hari.
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 product-item filter-Desain-Floral" data-aos="zoom-in" data-aos-delay="400">
-          <div class="product-wrap">
-            <figure>
-              <img src="./assets/images/produk/kuku11.jpg" class="img-fluid" alt="">
-            </figure>
-
-            <div class="product-info">
-              <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain Floral 1</a></h4>
-              <span class="bold">Harga:</span><br>Mulai Rp 100.000 - 200.000<br>
-              <span class="bold">Deskripsi:</span><br>Desain kuku floral dengan motif bunga yang indah dan berwarna-warni. Cocok untuk acara spesial.
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 product-item filter-Desain-Glitter" data-aos="zoom-in" data-aos-delay="600">
-          <div class="product-wrap">
-            <figure>
-              <img src="./assets/images/produk/kuku3.jpg" class="img-fluid" alt="">
-            </figure>
-
-            <div class="product-info">
-              <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain Glitter 1</a></h4>
-              <span class="bold">Harga:</span><br>Mulai Rp 120.000 - 250.000<br>
-              <span class="bold">Deskripsi:</span><br>Desain kuku dengan glitter yang memberikan efek berkilauan dan glamor. Cocok untuk pesta dan acara khusus.
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 product-item filter-Desain-3D" data-aos="zoom-in" data-aos-delay="200">
-          <div class="product-wrap">
-            <figure>
-              <img src="./assets/images/produk/kuku4.jpg" class="img-fluid" alt="">
-            </figure>
-
-            <div class="product-info">
-              <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain 3D 1</a></h4>
-              <span class="bold">Harga:</span><br>Mulai Rp 150.000 - 300.000<br>
-              <span class="bold">Deskripsi:</span><br>Desain kuku 3D dengan aksen yang menonjol dan kreatif. Memberikan tampilan yang unik dan menarik.
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 product-item filter-Desain-Sederhana" data-aos="zoom-in" data-aos-delay="400">
-          <div class="product-wrap">
-            <figure>
-              <img src="./assets/images/produk/kuku5.jpg" class="img-fluid" alt="">
-            </figure>
-
-            <div class="product-info">
-              <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain Sederhana 2</a></h4>
-              <span class="bold">Harga:</span><br>Mulai Rp 50.000 - 150.000<br>
-              <span class="bold">Deskripsi:</span><br>Desain kuku sederhana dengan variasi warna yang elegan dan stylish.
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 product-item filter-Desain-Floral" data-aos="zoom-in" data-aos-delay="600">
-          <div class="product-wrap">
-            <figure>
-              <img src="./assets/images/produk/kuku6.jpg" class="img-fluid" alt="">
-            </figure>
-
-            <div class="product-info">
-              <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain Floral 2</a></h4>
-              <span class="bold">Harga:</span><br>Mulai Rp 100.000 - 200.000<br>
-              <span class="bold">Deskripsi:</span><br>Desain kuku floral dengan sentuhan artistik yang elegan dan feminin.
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 product-item filter-Desain-Glitter" data-aos="zoom-in" data-aos-delay="200">
-          <div class="product-wrap">
-            <figure>
-              <img src="./assets/images/produk/kuku7.jpg" class="img-fluid" alt="">
-            </figure>
-
-            <div class="product-info">
-              <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain Glitter 2</a></h4>
-              <span class="bold">Harga:</span><br>Mulai Rp 120.000 - 250.000<br>
-              <span class="bold">Deskripsi:</span><br>Desain kuku glitter dengan kombinasi warna yang menawan dan mewah.
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 product-item filter-Desain-3D" data-aos="zoom-in" data-aos-delay="400">
-          <div class="product-wrap">
-            <figure>
-              <img src="./assets/images/produk/kuku8.jpg" class="img-fluid" alt="">
-            </figure>
-
-            <div class="product-info">
-              <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain 3D 2</a></h4>
-              <span class="bold">Harga:</span><br>Mulai Rp 150.000 - 300.000<br>
-              <span class="bold">Deskripsi:</span><br>Desain kuku 3D dengan detail yang rumit dan indah, menciptakan tampilan yang memikat.
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 product-item filter-Desain-3D" data-aos="zoom-in" data-aos-delay="600">
-          <div class="product-wrap">
-            <figure>
-              <img src="./assets/images/produk/kuku9.jpg" class="img-fluid" alt="">
-            </figure>
-
-            <div class="product-info">
-              <h4 class="product-text-style-4"><a data-toggle="modal" data-target="#orderModal">Desain 3D 3</a></h4>
-              <span class="bold">Harga:</span><br>Mulai Rp 150.000 - 300.000<br>
-              <span class="bold">Deskripsi:</span><br>Desain kuku 3D dengan aksen yang unik dan penuh gaya, memberikan kesan yang memukau.
-            </div>
-          </div>
-        </div>
-
-      </div> -->
       <?php
 include 'desaincadangan.php';
 
@@ -398,13 +270,21 @@ $designs = ambilDesain2();
 </div>
 
 <!-- Form Ulasan -->
-<div id="reviewFormContainer" style="display: none;">
+<div id="reviewFormContainer" style="display:none;">
     <h3>Form Ulasan</h3>
     <form id="reviewForm" action="review.php" method="POST">
-        <div class="form-group">
+          <div class="form-group">
             <label for="rating">Rating</label>
-            <input type="number" class="form-control" id="rating" name="rating" placeholder="Masukkan rating Anda" required>
+            <div class="star-rating">
+                <span class="star" data-value="1" title="Sangat Buruk">&#9733;</span>
+                <span class="star" data-value="2" title="Buruk">&#9733;</span>
+                <span class="star" data-value="3" title="Biasa Saja">&#9733;</span>
+                <span class="star" data-value="4" title="Bagus">&#9733;</span>
+                <span class="star" data-value="5" title="Sangat Bagus">&#9733;</span>
+            </div>
+            <input type="hidden" id="rating" name="rating" required>
         </div>
+
         <div class="form-group">
             <label for="review">Ulasan</label>
             <textarea class="form-control" id="review" name="review" placeholder="Masukkan ulasan Anda" required></textarea>
@@ -413,10 +293,46 @@ $designs = ambilDesain2();
     </form>
 </div>
 
+<!-- Testimoni -->
+<article id="testimoni" class="card judul">
+    <div class="testimonial-container" id="testimonials-container">
+        <!-- Testimonials will be inserted here -->
+    </div>
+    <h1 class="text-center">Ulasan Pelanggan</h1>
+    <div class="testimonial-cards-container">
+        <!-- Testimonial cards will be inserted here -->
+    </div>
+</article>
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-  $(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function () {
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('rating');
+
+    stars.forEach(star => {
+        star.addEventListener('click', function () {
+            const value = this.getAttribute('data-value');
+            ratingInput.value = value;
+            console.log('Rating set to: ' + value);  // Untuk debug
+
+            stars.forEach(s => {
+                s.classList.remove('selected');
+            });
+
+            this.classList.add('selected');
+            let previousSibling = this.previousElementSibling;
+            while (previousSibling) {
+                previousSibling.classList.add('selected');
+                previousSibling = previousSibling.previousElementSibling;
+            }
+        });
+    });
+});
+
+$(document).ready(function() {
     var unitPrice = 0;
 
     $('.open-modal').on('click', function() {
@@ -527,6 +443,9 @@ $designs = ambilDesain2();
 
                         // Hide the review form
                         $('#reviewFormContainer').hide();
+
+                        // Fetch and display testimonials again
+                        fetchTestimonials();
                     }
                 });
             },
@@ -540,157 +459,297 @@ $designs = ambilDesain2();
             }
         });
     });
+
+    // Fetch testimonials
+    function fetchTestimonials() {
+        fetch('fetch_testimoni.php')
+        .then(response => response.json())
+        .then(data => {
+            const cardsContainer = document.querySelector('.testimonial-cards-container');
+            let currentIndex = 0;
+
+            function createStarRating(rating) {
+                const starContainer = document.createElement('div');
+                starContainer.classList.add('star-rating');
+
+                for (let i = 1; i <= 5; i++) {
+                    const star = document.createElement('span');
+                    star.innerHTML = '&#9733;'; // Unicode for star character
+                    star.classList.add('star');
+                    if (i <= rating) {
+                        star.classList.add('filled');
+                    }
+                    starContainer.appendChild(star);
+                }
+
+                return starContainer;
+            }
+
+            function displayTestimonials() {
+                cardsContainer.innerHTML = ''; // Clear the cards container
+                for (let i = 0; i < data.length; i++) {
+                    const testimonial = data[i];
+
+                    const card = document.createElement('div');
+                    card.classList.add('testimonial-card');
+
+                    const img = document.createElement('img');
+                    img.src = './assets/images/lainnya/person.jpg'; // Add the image source
+
+                    const name = document.createElement('h3');
+                    name.textContent = testimonial.review;
+
+                    const review = document.createElement('p');
+                    review.textContent = testimonial.rating;
+
+                    const ratingStars = createStarRating(testimonial.rating);
+
+                    const date = document.createElement('span');
+                    date.textContent = testimonial.waktu;
+
+                    card.appendChild(img); // Append the image
+                    card.appendChild(name);
+                    card.appendChild(review);
+                    card.appendChild(ratingStars); // Append the star rating
+                    card.appendChild(date);
+
+                    cardsContainer.appendChild(card);
+                }
+            }
+
+            displayTestimonials(); // Initial display
+
+            function scrollTestimonials() {
+                const firstCardWidth = document.querySelector('.testimonial-card').offsetWidth;
+                cardsContainer.scrollBy({ left: firstCardWidth, behavior: 'smooth' });
+
+                currentIndex = (currentIndex + 1) % data.length;
+
+                if (currentIndex === 0) {
+                    cardsContainer.scrollTo({ left: 0, behavior: 'smooth' });
+                }
+            }
+
+            setInterval(scrollTestimonials, 5000); // Scroll every 5 seconds
+        })
+        .catch(error => console.error('Error fetching testimonials:', error));
+    }
+
+    // Initial fetch of testimonials
+    fetchTestimonials();
 });
-</script>
+
+    var unitPrice = 0;
+
+    $('.open-modal').on('click', function() {
+        var productItem = $(this).closest('.product-item');
+        var productId = productItem.data('id');
+        var productName = productItem.data('name');
+        var productPrice = productItem.data('price');
+
+        unitPrice = parseFloat(productPrice); // Store the unit price
+
+        $('#productId').val(productId);
+        $('#productName').val(productName);
+        $('#productPrice').val(productPrice);
+        $('#price').val(productPrice); // Set the price field with unit price
+        $('#orderTime').val(new Date().toISOString()); // Set the current time
+    });
+
+    $('#quantity').on('input', function() {
+        var quantity = $(this).val();
+
+        // Calculate the total price based on quantity
+        var totalPrice = unitPrice * quantity;
+        $('#price').val(totalPrice);
+    });
+
+    $('#orderForm').on('submit', function(e) {
+        e.preventDefault();
+        var formData = $(this).serialize();
+
+        // Send the form data using AJAX
+        $.ajax({
+            url: 'order.php',
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    // Display success message using SweetAlert
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Order Berhasil',
+                        text: 'Your order is being processed. Please wait for admin confirmation.',
+                        showCancelButton: true,
+                        confirmButtonText: 'Beri Ulasan',
+                        cancelButtonText: 'Tidak, Terima Kasih'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Close order modal
+                            $('#orderModal').modal('hide');
+                            // Show review form
+                            $('#reviewFormContainer').show();
+                        } else {
+                            window.location.href = 'index.php'; // Redirect to homepage
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Order Failed',
+                        text: response.message,
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log("Error: " + error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Something went wrong with the order submission.'
+                });
+            }
+        });
+    });
+
+  </script>
 
 
   </section>
 
-  <style>
-  .testimonial-card {
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 15px;
-      margin: 15px;
-      text-align: center;
-      flex: 0 0 auto;
-      width: 300px;
+<style>
+  /* Star Rating */
+.star-rating {
+    direction: rtl;
+    display: inline-block;
+}
+
+.star {
+    font-size: 2em;
+    color: lightgray;
+    cursor: pointer;
+}
+
+.star:hover,
+.star:hover ~ .star,
+.star.selected {
+    color: gold;
+}
+
+/* Testimoni */
+.testimonial-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px;
+    text-align: center;
+    flex: 0 0 auto;
+    width: 300px;
+}
+
+.testimonial-card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.testimonial-cards-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.star-rating {
+    display: flex;
+}
+
+.star {
+    font-size: 1.5em;
+    color: lightgray;
+    text-align: center;
+}
+
+.star.filled {
+    color: gold;
+
+/* Optional: Custom tooltip styles */
+.star:hover::after {
+    content: attr(title);
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+}
+
+</style>
+<?php
+include 'koneksi.php';
+
+// Memanggil file PHP yang berisi fungsi-fungsi
+require_once 'pelanggan.php';
+
+// Mengambil data pelanggan
+$pelanggan = ambilPelanggan();
+
+// Query untuk mendapatkan data desain yang sering dibeli termasuk gambar
+$query = "
+SELECT 
+    dc.nama_desain AS nama_item,
+    dc.gambar AS image,
+    COUNT(*) AS jumlah_pembelian,
+    COUNT(DISTINCT p.id_pelanggan) AS jumlah_pelanggan
+FROM 
+    penjualan p
+JOIN 
+    desain_cadangan dc ON p.id_desain = dc.id_desain
+GROUP BY 
+    p.id_desain
+ORDER BY 
+    jumlah_pembelian DESC;
+";
+
+$result = mysqli_query($koneksi, $query);
+
+// Mendapatkan hasil query ke dalam bentuk array
+$items = [];
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $items[] = $row;
     }
-    .testimonial-card img {
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
-    .testimonial-cards-container {
-      display: flex;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-    }
-  </style>
+}
+?>
 
-<article id="testimoni" class="card judul">
-    <div class="testimonial-container" id="testimonials-container">
-      <!-- Testimonials will be inserted here -->
-    </div>
-
-    <h1 class="text-center">Ulasan Pelanggan</h1>
-
-    <div class="testimonial-cards-container">
-      <!-- Testimonial cards will be inserted here -->
-    </div>
-  </article>
-
-  <script>
-  // Fetch the ulasan
-  fetch('fetch_testimoni.php')
-    .then(response => response.json())
-    .then(data => {
-      const cardsContainer = document.querySelector('.testimonial-cards-container');
-      let currentIndex = 0;
-
-      function displayTestimonials() {
-        cardsContainer.innerHTML = ''; // Clear the cards container
-        for (let i = 0; i < data.length; i++) {
-          const testimonial = data[i];
-
-          const card = document.createElement('div');
-          card.classList.add('testimonial-card');
-
-          const img = document.createElement('img');
-          img.src = './assets/images/lainnya/person.jpg'; // Add the image source
-
-          const name = document.createElement('h3');
-          name.textContent = testimonial.review;
-
-          const review = document.createElement('p');
-          review.textContent = testimonial.rating;
-
-          const date = document.createElement('span');
-          date.textContent = testimonial.waktu;
-
-          card.appendChild(img); // Append the image
-          card.appendChild(name);
-          card.appendChild(review);
-          card.appendChild(date);
-
-          cardsContainer.appendChild(card);
-        }
-      }
-
-      displayTestimonials(); // Initial display
-
-      function scrollTestimonials() {
-        const firstCardWidth = document.querySelector('.testimonial-card').offsetWidth;
-        cardsContainer.scrollBy({ left: firstCardWidth, behavior: 'smooth' });
-
-        currentIndex = (currentIndex + 1) % data.length;
-
-        if (currentIndex === 0) {
-          cardsContainer.scrollTo({ left: 0, behavior: 'smooth' });
-        }
-      }
-
-      setInterval(scrollTestimonials, 5000); // Scroll every 5 seconds
-    })
-    .catch(error => console.error('Error fetching testimonials:', error));
-</script>
-
-
-    <!-- <section id="testimonial-form" style="padding: 50px 0; background: #fff;"> -->
-    <!-- <div style="padding: 50px 0; background: #fff;">
-      <div class="container form-container">
-        <div class="section-title form-title">
-          <h2>Submit Your Testimonial</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h5 class="card-title fw-semibold mb-4">Desain/Treatment yang Sering Dibeli</h5>
         </div>
-        <form id="testimonial-form" action="proses_tambah_ulasan.php" method="POST" style="display: flex; flex-direction: column;">
-          <table class="form-table">
-            <tr>
-              <td><label for="nama_pelanggan">Nama Pelanggan</label></td>
-              <td><input type="text" id="nama_pelanggan" name="nama_pelanggan" required></td>
-            </tr>
-            <tr>
-              <td><label for="email">Email</label></td>
-              <td><input type="email" id="email" name="email" required></td>
-            </tr>
-            <tr>
-              <td><label for="no_telp">No. Telp</label></td>
-              <td><input type="tel" id="no_telp" name="no_telp" required></td>
-            </tr>
-            <tr>
-              <td><label for="teks_ulasan">Teks Ulasan</label></td>
-              <td><textarea id="teks_ulasan" name="teks_ulasan" rows="4" required></textarea></td>
-            </tr>
-            <tr>
-              <td><label for="tanggal_ulasan">Tanggal Ulasan</label></td>
-              <td><input type="date" id="tanggal_ulasan" name="tanggal_ulasan" required></td>
-            </tr>
-            <tr>
-              <td><label for="rating">Rating</label></td>
-              <td>
-                <div class="rating">
-                  <input type="radio" id="star5" name="rating" value="5" />
-                  <label for="star5" title="Sangat Baik">⭐</label>
-                  <input type="radio" id="star4" name="rating" value="4" />
-                  <label for="star4" title="Baik">⭐</label>
-                  <input type="radio" id="star3" name="rating" value="3" />
-                  <label for="star3" title="Cukup">⭐</label>
-                  <input type="radio" id="star2" name="rating" value="2" />
-                  <label for="star2" title="Buruk">⭐</label>
-                  <input type="radio" id="star1" name="rating" value="1" />
-                  <label for="star1" title="Sangat Buruk">⭐</label>
+    </div>
+    <div class="row">
+        <?php foreach ($items as $index => $item) : ?>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="<?php echo htmlspecialchars($item['image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($item['nama_item']); ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo htmlspecialchars($item['nama_item']); ?></h5>
+                        <p class="card-text">Jumlah Pembelian: <?php echo $item['jumlah_pembelian']; ?></p>
+                        <p class="card-text">Jumlah Pelanggan: <?php echo $item['jumlah_pelanggan']; ?></p>
+                    </div>
                 </div>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" style="text-align: center;"><button type="submit">Submit</button></td>
-            </tr>
-          </table>
-        </form>
-      </div>
-    </div> -->
-    <!-- Awalan rajendra -->
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
 
     <section id="location">
       <div class="section-title">
